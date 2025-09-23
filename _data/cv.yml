@@ -11,11 +11,11 @@
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Rochester, Rochester, New York, US
+    - title: PhD in Chemical Engineering
+      institution: <a href="https://www.hajim.rochester.edu/che/">Department of Chemical and Sustainability Engineering</a>, University of Rochester, Rochester, New York, US
       year: 2024 - Present
-    - title: BS
-      institution: Xiamen University, Xiamen, China
+    - title: BS in Chemistry
+      institution: <a href="https://chem.xmu.edu.cn/en/">College of Chemistry and Chemical Engineering</a>, Xiamen University, Xiamen, Fujian, China
       year: 2020 - 2024
 
 - title: Experience
@@ -28,7 +28,7 @@
         - CHE 471 - Introduction to Computational Modeling and Machine Learning
 
     - title: Internship
-      institution: Helmholtz Zentrum München, Munich, Germany
+      institution: <a href="https://www.helmholtz-munich.de">Helmholtz Zentrum München</a>, Munich, Bavaria, Germany
       year: 2023 - 2024
 
     - title: Teaching Assistant
