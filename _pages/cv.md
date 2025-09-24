@@ -1,9 +1,9 @@
 ---
 layout: cv
-permalink: /cv/
-title: cv
+permalink: /CV/
+title: CV
 nav: true
-nav_order: 5
+nav_order: 4
 toc:
   sidebar: left
 ---
