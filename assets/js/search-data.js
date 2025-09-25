@@ -37,11 +37,23 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/photos/";
           },
+        },{id: "nav-miscellaneous",
+          title: "Miscellaneous",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/miscellaneous/";
+          },
         },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
+            },},{id: "books-the-godfather",
+          title: 'The Godfather',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the_godfather2/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
