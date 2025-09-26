@@ -1418,6 +1418,13 @@ figure.cover {
     background-color: #b0abb3;
   }
 
+  figcaption.ongoing {
+    font-family: monospace;
+    color: #23212d;
+    text-transform: uppercase;
+    background-color: #6c7ae0; /* pick your color */
+  }
+
   /* mouse over link */
   a.cover-link:hover {
     color: #23212d !important;
