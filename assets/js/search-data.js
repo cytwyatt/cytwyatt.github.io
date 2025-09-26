@@ -44,16 +44,16 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "books-the-godfather",
-          title: 'The Godfather',
+        },{id: "books-dark-souls-remastered",
+          title: 'DARK SOULS™: REMASTERED',
           description: "",
           section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
-            },},{id: "books-the-godfather",
-          title: 'The Godfather',
+              window.location.href = "/books/darksoul/";
+            },},{id: "books-hollow-knight-silksong",
+          title: 'Hollow Knight: Silksong',
           description: "",
           section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather2/";
+              window.location.href = "/books/silksong/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
