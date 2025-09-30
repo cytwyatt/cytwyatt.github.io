@@ -49,8 +49,8 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/darksoul/";
-            },},{id: "books-hollow-knight-silksong",
-          title: 'Hollow Knight: Silksong',
+            },},{id: "books-hollow-knight-silksong-空洞骑士-丝之歌",
+          title: 'Hollow Knight: Silksong / 空洞骑士：丝之歌',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/silksong/";
