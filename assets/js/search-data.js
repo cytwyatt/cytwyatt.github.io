@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "books-dark-souls-remastered",
+        },{id: "post-reweighting-technique-in-molecular-simulations-from-umbrella-sampling-to-mbar",
+        
+          title: "Reweighting Technique in Molecular Simulations: From Umbrella Sampling to MBAR",
+        
+        description: "Enhanced Sampling 1",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/enhanced-sampling1/";
+          
+        },
+      },{id: "books-dark-souls-remastered",
           title: 'DARK SOULS™: REMASTERED',
           description: "",
           section: "Books",handler: () => {
