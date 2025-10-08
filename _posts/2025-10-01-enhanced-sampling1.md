@@ -47,17 +47,17 @@ In a molecular system, the microscopic configuration is determined by the contin
 $$
     p(\mathbf{x}, \mathbf{p}) = 
     \frac{\mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)}}
-         {\iint \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, d\mathbf{x} \, d\mathbf{p}}
+         {\iint \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, \mathrm{d}\mathbf{x} \, \mathrm{d}\mathbf{p}}
 $$
 
 Most of the time, we are only interested in the configurational distribution, so we can integrate out the momenta. This gives
 
 $$
     p(\mathbf{x}) = 
-    \frac{\int \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, d\mathbf{p}}
-         {\iint \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, d\mathbf{x} \, d\mathbf{p}}
+    \frac{\int \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, \mathrm{d}\mathbf{p}}
+         {\iint \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, \mathrm{d}\mathbf{x} \, \mathrm{d}\mathbf{p}}
     = \frac{\mathrm{e}^{-\beta U(\mathbf{x})}}
-           {\int \mathrm{e}^{-\beta U(\mathbf{x})} \, d\mathbf{x}}
+           {\int \mathrm{e}^{-\beta U(\mathbf{x})} \, \mathrm{d}\mathbf{x}}
     = \frac{1}{Z} \, \mathrm{e}^{-\beta U(\mathbf{x})}
 $$
 
@@ -68,15 +68,15 @@ where $Z$ is the configurational partition function. Note that $Z$ is a muitl-di
 Often, we are interested in how to measure a physical observable $O$ in a given ensemble. From probability theory, we can calculate its expectation value as
 
 $$
-    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, d\mathbf{x} 
-    = \frac{\int O(\mathbf{x}) \, \mathrm{e}^{-\beta U(\mathbf{x})} \, d\mathbf{x}}
-           {\int \mathrm{e}^{-\beta U(\mathbf{x})} \, d\mathbf{x}}
+    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x} 
+    = \frac{\int O(\mathbf{x}) \, \mathrm{e}^{-\beta U(\mathbf{x})} \, \mathrm{d}\mathbf{x}}
+           {\int \mathrm{e}^{-\beta U(\mathbf{x})} \, \mathrm{d}\mathbf{x}}
 $$
 
 However, for most systems beyond the trivial cases, evaluating this integral exactly is impossible, and we must seek approximations. Suppose that we can somehow sample from the Boltzmann distribution (we will return to sampling methods later). In that case, we can use **Monte Carlo integration** to approximate the expectation value (I will use equal sign in the rest of the post, but keep on mind this is an approximation and the error decreases as the increase of samples):
 
 $$
-    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, d\mathbf{x} 
+    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x} 
     \approx \frac{1}{N} \sum_{n=1}^N O(\mathbf{x}_n),\quad\mathbf{x}_n\sim p(\mathbf{x})
 $$
 
@@ -87,9 +87,9 @@ Everything looks good, but the problem is that we cannot efficiently sample from
 Suppose we want to measure an observable $O$ under distribution $p(\mathbf{x})$, and we can find another proposal distribution $q(\mathbf{x})$. Then
 
 $$
-    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, d\mathbf{x} 
-    = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \frac{q(\mathbf{x})}{q(\mathbf{x})} \, d\mathbf{x}
-    = \int O(\mathbf{x}) \, \frac{p(\mathbf{x})}{q(\mathbf{x})} \, q(\mathbf{x}) \, d\mathbf{x}
+    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x} 
+    = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \frac{q(\mathbf{x})}{q(\mathbf{x})} \, \mathrm{d}\mathbf{x}
+    = \int O(\mathbf{x}) \, \frac{p(\mathbf{x})}{q(\mathbf{x})} \, q(\mathbf{x}) \, \mathrm{d}\mathbf{x}
     = \frac{1}{N} \sum_{n=1}^N O(\mathbf{x}_n) \, \frac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}, \quad \mathbf{x}_n \sim q(\mathbf{x})
 $$
 
@@ -121,13 +121,13 @@ $$
     p(\mathbf{x}) = \frac{\mathrm{e}^{-\beta U(\mathbf{x})}}{Z_p},
 $$
 
-where $Z_p = \int \mathrm{e}^{-\beta U(\mathbf{x})} d\mathbf{x}$ is the partition function. But in simulation we apply a bias $U_b(\mathbf{x})$ to the original system, which makes us sample from another Boltzmann distribution $q(\mathbf{x})$:
+where $Z_p = \int \mathrm{e}^{-\beta U(\mathbf{x})} \mathrm{d}\mathbf{x}$ is the partition function. But in simulation we apply a bias $U_b(\mathbf{x})$ to the original system, which makes us sample from another Boltzmann distribution $q(\mathbf{x})$:
 
 $$
     q(\mathbf{x}) = \frac{\mathrm{e}^{-\beta (U(\mathbf{x}) + U_b(\mathbf{x}))}}{Z_q},
 $$
 
-where $Z_q = \int \mathrm{e}^{-\beta (U(\mathbf{x})+U_b(\mathbf{x}))} d\mathbf{x}$. According to importance sampling, the expectation value of $O$ under the original distribution can be estimated from biased sampling:
+where $Z_q = \int \mathrm{e}^{-\beta (U(\mathbf{x})+U_b(\mathbf{x}))} \mathrm{d}\mathbf{x}$. According to importance sampling, the expectation value of $O$ under the original distribution can be estimated from biased sampling:
 
 $$
     \langle O \rangle_p = \frac{1}{N} \sum_{n=1}^N O(\mathbf{x}_n) \frac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}
