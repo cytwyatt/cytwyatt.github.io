@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "post-reweighting-technique-in-molecular-simulations-from-umbrella-sampling-to-mbar",
+        },{id: "post-collective-variables-and-free-energy-profile",
+        
+          title: "Collective Variables and Free Energy Profile",
+        
+        description: "Enhanced Sampling 2",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/enhanced-sampling2/";
+          
+        },
+      },{id: "post-reweighting-technique-in-molecular-simulations-from-umbrella-sampling-to-mbar",
         
           title: "Reweighting Technique in Molecular Simulations: From Umbrella Sampling to MBAR",
         
