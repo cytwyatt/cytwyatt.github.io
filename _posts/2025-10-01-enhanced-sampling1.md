@@ -73,7 +73,7 @@ $$
            {\int \mathrm{e}^{-\beta U(\mathbf{x})} \, \mathrm{d}\mathbf{x}}
 $$
 
-However, for most systems beyond the trivial cases, evaluating this integral exactly is impossible, and we must seek approximations. Suppose that we can somehow sample from the Boltzmann distribution (we will return to sampling methods later). In that case, we can use **Monte Carlo integration** to approximate the expectation value (I will use equal sign in the rest of the post, but keep on mind this is an approximation and the error decreases as the increase of samples):
+However, for most systems beyond the trivial cases, evaluating this integral exactly is impossible, and we must seek approximations. Suppose that we can somehow sample from the Boltzmann distribution (we will return to sampling methods later). In that case, we can use **Monte Carlo integration** to approximate the expectation value (I will use equal sign in the rest of the post, but keep on mind this is an approximation and the error decreases as the increase of samples. Meanwhile the convergence is only guaranteed for ergodic system, which is not always true):
 
 $$
     \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x} 
@@ -178,6 +178,14 @@ where the weights are normalized:
 
 $$
     w_n = \frac{\mathrm{e}^{\beta U_b(\mathbf{x}_n)}}{\sum\limits_{n=1}^N \mathrm{e}^{\beta U_b(\mathbf{x}_n)}}\quad \sum_{n=1}^N w_n = 1.
+$$
+
+It can be also written as a ratio of two expectation:
+
+$$
+    \langle O \rangle_p
+    = \sum\limits_{n=1}^N \frac{O(\mathbf{x}_n) \, \mathrm{e}^{\beta U_b(\mathbf{x}_n)}}{\sum\limits_{n=1}^N \mathrm{e}^{\beta U_b(\mathbf{x}_n)}}
+    = \frac{\langle O \mathrm{e}^{\beta U_b} \rangle _q}{\langle \mathrm{e}^{\beta U_b} \rangle _q}
 $$
 
 Always remember the $\mathbf{x}_n$ is sampled from $q$, otherwise we don't need the weight.
