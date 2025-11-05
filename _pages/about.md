@@ -9,7 +9,7 @@ profile:
   image: profile.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>Rochester, NY, USA</p>
+    <p>Rochester, NY, USA<br> Photoed in Osaka, Japan</p>
 
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
