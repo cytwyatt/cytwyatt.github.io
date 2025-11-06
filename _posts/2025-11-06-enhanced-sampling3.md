@@ -61,11 +61,13 @@ $$
 To verify this, consider two cases:
 
 - If $U(x_j) < U(x_i)$, then
+- 
   $$
   \frac{A(x_i \rightarrow x_j)}{A(x_j \rightarrow x_i)} = \frac{1}{\mathrm{e}^{-\beta (U(x_i) - U(x_j))}} = \mathrm{e}^{-\beta (U(x_j) - U(x_i))}.
   $$
 
 - If $U(x_j) > U(x_i)$, then
+- 
   $$
   \frac{A(x_i \rightarrow x_j)}{A(x_j \rightarrow x_i)} = \frac{\mathrm{e}^{-\beta (U(x_j) - U(x_i))}}{1} = \mathrm{e}^{-\beta (U(x_j) - U(x_i))}.
   $$
