@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "post-collective-variables-and-free-energy-profile",
+        },{id: "post-opes-and-implementation-in-toy-model",
+        
+          title: "OPES and Implementation in Toy Model",
+        
+        description: "Enhanced Sampling 3",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/enhanced-sampling3/";
+          
+        },
+      },{id: "post-collective-variables-and-free-energy-profile",
         
           title: "Collective Variables and Free Energy Profile",
         
