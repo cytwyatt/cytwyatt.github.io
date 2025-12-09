@@ -2,10 +2,10 @@
 layout: post
 title: "Reweighting Technique in Molecular Simulations: From Umbrella Sampling to MBAR"
 date: 2025-10-01
-description: Enhanced Sampling 1
+description: "An introduction to importance sampling and reweighting techniques in molecular simulations, covering umbrella sampling and MBAR (Multistate Bennett Acceptance Ratio)."
 tags: Simulation Math Sampling MD
 categories: Academic
-related_posts: false
+related_posts: true
 ---
 
 This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling). 
@@ -14,7 +14,10 @@ Prerequisite: Basic Molecular Dynamics, Thermodynamics, Probability Theory.
 
 ---
 
-#### Boltzmann Distribution
+## Theoretical Foundations
+
+### Boltzmann Distribution
+
 Starting from the second law of thermodynamics, we can derive that, at a given temperature, the probability of finding a specific microscopic configuration $x_i$ follows the **Boltzmann distribution** (sometimes called the Gibbs distribution)
 
 $$
@@ -39,7 +42,8 @@ If the exponential factor were always $1$, then $Z$ would simply count the numbe
 
 From this formula we also see a key feature of the Boltzmann distribution: all microstates with the same energy are equally probable. In other words, the probability depends only on the energy, not on any other label of the configuration.
 
-#### Ensemble
+### Ensemble
+
 In statistical mechanics, an ensemble is a collection of hypothetical copies of a system that all share the same macroscopic properties (such as temperature, pressure, volume, and chemical potential) but may differ in their microscopic details (such as the positions and velocities of individual particles). The most common ensemble is the so-called canonical ensemble (also $NVT$ ensemble), where the number of particles $N$, volume $V$, and temperature $T$ are fixed. The probability distribution is given by the Boltzmann distribution.
 
 In a molecular system, the microscopic configuration is determined by the continuous positions $\mathbf{x}$ and momenta $\mathbf{p}$ (note that if the system has $N$ particles, the dimension of both $\mathbf{x}$ and $\mathbf{p}$ is $3N$). Thus we can rewrite the Boltzmann distribution as
@@ -53,8 +57,7 @@ $$
 Most of the time, we are only interested in the configurational distribution, so we can integrate out the momenta. This gives
 
 $$
-    p(\mathbf{x}) = 
-    \frac{\int \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, \mathrm{d}\mathbf{p}}
+    p(\mathbf{x}) = \frac{\int \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, \mathrm{d}\mathbf{p}}
          {\iint \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, \mathrm{d}\mathbf{x} \, \mathrm{d}\mathbf{p}}
     = \frac{\mathrm{e}^{-\beta U(\mathbf{x})}}
            {\int \mathrm{e}^{-\beta U(\mathbf{x})} \, \mathrm{d}\mathbf{x}}
@@ -63,7 +66,7 @@ $$
 
 where $Z$ is the configurational partition function. Note that $Z$ is a muitl-dimensional intergral ($3N$) which is generally impossible to evaluate.
 
-#### Expectation
+### Expectation
 
 Often, we are interested in how to measure a physical observable $O$ in a given ensemble. From probability theory, we can calculate its expectation value as
 
@@ -109,9 +112,11 @@ $$
 
 This means that if we want to measure an observable $O$ under distribution $p$, instead of sampling directly from $p$, we can sample from another distribution $q$. The expectation value of $O$ is then obtained as the average of $O(\mathbf{x}_n)$ weighted by the factor $\tfrac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}$. 
 
-This is a very powerful technique, and it is valid for any observable $O$ and for any pair of distributions $p$ and $q$. The effectiveness of the method depends on how well $q$ approximates $p$. If the ratio $\tfrac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}$ fluctuates too much, the estimator will become very noisy. Of course, finding a suitable $q$ that both approximates $p$ well and is easy to sample from is not trivial — but before worrying about that, let’s first look at some examples of how to use it.
+This is a very powerful technique, and it is valid for any observable $O$ and for any pair of distributions $p$ and $q$. The effectiveness of the method depends on how well $q$ approximates $p$. If the ratio $\tfrac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}$ fluctuates too much, the estimator will become very noisy. Of course, finding a suitable $q$ that both approximates $p$ well and is easy to sample from is not trivial — but before worrying about that, let's first look at some examples of how to use it.
 
-#### Removing Bias
+## Applications of Importance Sampling
+
+### Removing Bias
 
 In many enhanced sampling methods for example the **umbrella sampling**, we apply a bias potential to help the system overcome energy barriers and explore the full configurational space. The problem is how to remove the bias and recover the true expectation value of an observable. This is where importance sampling comes in.
 
@@ -190,7 +195,7 @@ $$
 
 Always remember the $\mathbf{x}_n$ is sampled from $q$, otherwise we don't need the weight.
 
-#### Removing Multiple Bias
+### Removing Multiple Bias
 
 In many cases, a single biased sampling is not enough. For example, in **umbrella sampling**, we pin the system at multiple positions by applying different bias potentials centered at those positions. Each simulation then explores a restricted region of configurational space. To reconstruct the unbiased distribution, we need to combine data from all these biased simulations and remove the effects of their respective bias potentials.
 
@@ -272,8 +277,16 @@ $$
 
 This is the central result of **MBAR (Multistate Bennett Acceptance Ratio)**, which provides the statistically optimal, minimum-variance estimate of observables and free energies when combining multiple biased simulations.
 
-#### Conclusion
+## Conclusion
 
 In this post, we explored the theoretical background of reweighting techniques and importance sampling in molecular simulations. These methods provide the foundation for correcting biased ensembles and recovering unbiased thermodynamic properties, even when direct sampling is impractical. 
 
 In the next post, I will present concrete examples and applications to show how these ideas are implemented in practice.
+
+---
+
+**Enhanced Sampling Series:**
+
+- **Part 1: Reweighting Technique in Molecular Simulations** (current)
+- [Part 2: Collective Variables and Free Energy Profile](/blog/2025/enhanced-sampling2/)
+- [Part 3: OPES and Implementation in Toy Model](/blog/2025/enhanced-sampling3/)

@@ -2,10 +2,10 @@
 layout: post
 title: "OPES and Implementation in Toy Model"
 date: 2025-11-06
-description: Enhanced Sampling 3
+description: "A practical guide to On-the-fly Probability Enhanced Sampling (OPES) with implementation details and a toy model demonstration."
 tags: Simulation Sampling MD
 categories: Academic
-related_posts: false
+related_posts: true
 ---
 
 This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling), [paper for OPES](https://pubs.acs.org/doi/10.1021/acs.jpclett.0c00497) and [PLUMED implementaion of OPES](https://arxiv.org/abs/2410.18019). You can find the whole code [here](https://cytwyatt.github.io/Toy-OPES/).
@@ -14,7 +14,9 @@ Prerequisite: Basic Molecular Dynamics, Thermodynamics, Probability Theory.
 
 ---
 
-#### Sampling
+## Sampling Methods
+
+### Markov Chain Monte Carlo (MCMC)
 
 As discussed in the previous post, if we are able to sample configurations from a given ensemble, we can estimate the expectation value of any observable as well as the free energy profile along any collective variable (CV). The most common approaches for sampling are **Molecular Dynamics (MD)** and **Monte Carlo (MC)**. To keep things simple, we will focus on one MC method called **Markov Chain Monte Carlo (MCMC)** and apply it to a toy one-dimensional potential.
 
@@ -101,6 +103,7 @@ def mcmc(x0, T, potential, std=1.0):
 {% endhighlight %}
 
 #### 1D double-well potential
+
 We now define a double-well potential to see if MCMC can correctly sample from that. The potential if taken from [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling/blob/main/Monday/toy_model_for_sampling.ipynb)
 
 {% highlight python linenos %}
@@ -244,7 +247,7 @@ You can increase the temperature to observe how the sampling behavior changes. T
 
 This observation motivates the idea of **Replica Exchange (RE)**, also known as **Parallel Tempering**. The key idea is that, instead of running a single simulation at a low temperature (which easily gets trapped but is of our primary interest), we **run multiple replicas** of the system at **different temperatures** simultaneously where high-temperature replicas can explore the configuration space more freely. By **occasionally exchanging configurations** between replicas, we allow the low-temperature systems to escape local minima and achieve proper sampling across the entire configurational space.
 
-I will not go into too much detail about Replica Exchange in this post. Instead, let’s recall from the previous discussion that **importance sampling** allows us to sample from a simpler distribution and still recover the original target distribution through reweighting. Could this idea help us here as well? For the proposal distribution, we will use the **well-tempered distribution** $p^{\mathrm{WT}}$, which aims to broaden the equilibrium distribution:
+I will not go into too much detail about Replica Exchange in this post. Instead, let's recall from the previous discussion that **importance sampling** allows us to sample from a simpler distribution and still recover the original target distribution through reweighting. Could this idea help us here as well?
 
 $$
 p^{\mathrm{WT}} \propto [p]^{1/\gamma},
@@ -265,6 +268,8 @@ F^{\mathrm{WT}}(\theta)
 $$
 
 Thus, the well-tempered distribution effectively **flattens the free energy landscape** by scaling down the energy barriers, facilitating transitions between metastable states while preserving the essential thermodynamic structure of the system.
+
+### Testing Well-Tempered Sampling
 
 {% highlight python linenos %}
 
@@ -308,7 +313,11 @@ This looks promising: if we run a simulation at a **higher temperature** and the
 - In high-dimensional systems, heating **accelerates all degrees of freedom**, not just the chosen CV. The orthogonal coordinates then explore regions that have **poor overlap** with the low-temperature Boltzmann measure, making reweighting **statistically unstable** (the weights become extremely skewed).
 - Practically, we only want to **accelerate sampling along a chosen CV** while leaving the **orthogonal modes near equilibrium**, so that reweighting remains efficient and observables are not contaminated by hot, irrelevant motions.
 
+## On-the-fly Probability Enhanced Sampling (OPES)
+
 This motivates **on-the-fly probability enhanced sampling (OPES)**. The idea is to **bias only the chosen CV** towards a target distribution $p^{\mathrm{tg}}(\theta)$ (e.g. the well-tempered distribution), while leaving the orthogonal degrees of freedom largely unaffected.
+
+### Theoretical Foundation
 
 For any CV $\theta$, its unbiased distribution is
 
@@ -448,6 +457,8 @@ plt.show()
   <img src="/assets/img/opes/fig5.png" width="600"/>
 </p>
 
+### Free Energy Estimation
+
 The free energy profile can be obtained either from **reweighting** or directly from the **quasi-static bias**:
 
 $$
@@ -490,12 +501,24 @@ We can see that these two free energy estimates are consistent with each other a
   <img src="/assets/gif/opes_evolution.gif" width="900"/>
 </p>
 
-As we can see, the bias potential quickly becomes quasi-static, which is one of the main advantages of **OPES**. Compared to **well-tempered metadynamics (WT-MetaD)**, which also aims to sample from a well-tempered distribution, OPES is generally more robust and achieves convergence faster. Moreover, OPES requires fewer parameters to tune, and the **reweighting procedure** is straightforward. In contrast, in WT-MetaD the bias continuously evolves over time, making accurate reweighting more challenging and requiring additional considerations.
+As we can see, the bias potential quickly becomes quasi-static, which is one of the main advantages of **OPES**. 
 
-#### Conclusion
+### Comparison with Well-Tempered Metadynamics
+
+Compared to **well-tempered metadynamics (WT-MetaD)**, which also aims to sample from a well-tempered distribution, OPES is generally more robust and achieves convergence faster. Moreover, OPES requires fewer parameters to tune, and the **reweighting procedure** is straightforward. In contrast, in WT-MetaD the bias continuously evolves over time, making accurate reweighting more challenging and requiring additional considerations.
+
+## Conclusion
 
 In this post, we explored how **on-the-fly probability enhanced sampling (OPES)** enables efficient sampling of free energy landscapes. Starting from the fundamental idea of biasing the collective variable (CV) distribution toward a target (e.g., well-tempered) distribution, we derived how the bias potential can be constructed iteratively from on-the-fly estimates of the CV probability.
 
 We demonstrated that OPES achieves rapid convergence, producing accurate free energy profiles that agree well with the exact results. Unlike **well-tempered metadynamics (WT-MetaD)**, OPES yields a nearly static bias very fast, making reweighting straightforward and reducing the number of parameters that need tuning.
 
-In practice, OPES is conveniently implemented in the **[PLUMED](https://www.plumed.org/doc-v2.10/user-doc/html/_o_p_e_s__m_e_t_a_d.html)** library, allowing it to be easily coupled with most molecular dynamics engines. Overall, OPES provides a **conceptually simple, computationally efficient, and robust** framework for enhanced sampling. 
+In practice, OPES is conveniently implemented in the **[PLUMED](https://www.plumed.org/doc-v2.10/user-doc/html/_o_p_e_s__m_e_t_a_d.html)** library, allowing it to be easily coupled with most molecular dynamics engines. Overall, OPES provides a **conceptually simple, computationally efficient, and robust** framework for enhanced sampling.
+
+---
+
+**Enhanced Sampling Series:**
+
+- [Part 1: Reweighting Technique in Molecular Simulations](/blog/2025/enhanced-sampling1/)
+- [Part 2: Collective Variables and Free Energy Profile](/blog/2025/enhanced-sampling2/)
+- **Part 3: OPES and Implementation in Toy Model** (current) 

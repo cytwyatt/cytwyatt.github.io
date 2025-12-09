@@ -2,10 +2,10 @@
 layout: post
 title: "Collective Variables and Free Energy Profile"
 date: 2025-11-03
-description: Enhanced Sampling 2
+description: "Understanding collective variables (CVs) and how to estimate free energy profiles from molecular simulations using kernel density estimation."
 tags: Simulation Sampling MD
 categories: Academic
-related_posts: false
+related_posts: true
 ---
 
 This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling). 
@@ -14,7 +14,9 @@ Prerequisite: Basic Molecular Dynamics, Thermodynamics, Probability Theory.
 
 ---
 
-#### Collective Variables (CVs)
+## Collective Variables
+
+### Definition and Motivation
 
 Consider a system of $N$ particles, $\lbrace \mathbf{x}_i \rbrace _{i=1}^N$, simulated in the NVT ensemble. The configuration space of this system has a dimensionality of $3N$, which makes it far too complex to fully monitor or visualize. To address this, we can define a carefully chosen $d$-dimensional vector
 
@@ -28,8 +30,7 @@ An effective CV should capture the slowest degrees of freedom and distinguish be
 
 However, identifying suitable CVs is often non-trivial, especially for systems where the slowest collective motions are not obvious. In recent years, **machine learning–based approaches** have shown promise in automatically discovering meaningful CVs. For practical examples, you can explore the [mlcolvar](https://github.com/luigibonati/mlcolvar) package, which implements some data-driven methods.
 
-
-#### Free Energy
+### Free Energy
 
 We often care about the free energy of a system, as it serves as a measure of its stability. In the NVT ensemble, the Helmholtz free energy is defined as
 
@@ -55,7 +56,7 @@ $$
 F(\theta) = -\frac{1}{\beta} \ln p(\theta) = -\frac{1}{\beta} \ln \int \mathrm{e}^{-\beta U(\mathbf{x})} \, \delta(\theta - \theta(\mathbf{x})) \, \mathrm{d}\mathbf{x} = -\frac{1}{\beta} \ln \langle \delta(\theta - \theta(\mathbf{x})) \rangle
 $$
 
-#### Estimating Free Energy from Simulation
+## Estimating Free Energy from Simulation
 
 From the previous derivation, we know that estimating the free energy profile reduces to estimating the probability distribution of a given CV $p(\theta)$. A common and effective method for this is **Kernel Density Estimation (KDE)**.  
 
@@ -83,6 +84,14 @@ $$
 
 Here, $U_b(\theta)$ is the applied bias potential, and the weights $w_i$ reweight the biased samples back to the unbiased ensemble.
 
-#### Conclusion
+## Conclusion
 
-In this post, I briefly discussed the concepts of **collective variables (CVs)** and **free energy profiles**, which are central to enhanced sampling methods. In the next post, we will explore how to use **umbrella sampling** to construct the free energy profile in practice.
+In this post, I briefly discussed the concepts of **collective variables (CVs)** and **free energy profiles**, which are central to enhanced sampling methods. In the next post, we will explore how to use **OPES (On-the-fly Probability Enhanced Sampling)** to construct the free energy profile in practice.
+
+---
+
+**Enhanced Sampling Series:**
+
+- [Part 1: Reweighting Technique in Molecular Simulations](/blog/2025/enhanced-sampling1/)
+- **Part 2: Collective Variables and Free Energy Profile** (current)
+- [Part 3: OPES and Implementation in Toy Model](/blog/2025/enhanced-sampling3/)
