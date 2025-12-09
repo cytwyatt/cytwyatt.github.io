@@ -44,11 +44,22 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "post-opes-and-implementation-in-toy-model",
+        },{id: "post-langevin-dynamics-from-wiener-process-to-stochastic-differential-equations",
+        
+          title: "Langevin Dynamics: From Wiener Process to Stochastic Differential Equations",
+        
+        description: "An intuitive introduction to stochastic differential equations, starting from the Wiener process and progressing to Itô&#39;s lemma, the Fokker-Planck equation, and Langevin dynamics.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/langevin-dynamics/";
+          
+        },
+      },{id: "post-opes-and-implementation-in-toy-model",
         
           title: "OPES and Implementation in Toy Model",
         
-        description: "Enhanced Sampling 3",
+        description: "A practical guide to On-the-fly Probability Enhanced Sampling (OPES) with implementation details and a toy model demonstration.",
         section: "Posts",
         handler: () => {
           
@@ -59,7 +70,7 @@ ninja.data = [{
         
           title: "Collective Variables and Free Energy Profile",
         
-        description: "Enhanced Sampling 2",
+        description: "Understanding collective variables (CVs) and how to estimate free energy profiles from molecular simulations using kernel density estimation.",
         section: "Posts",
         handler: () => {
           
@@ -70,7 +81,7 @@ ninja.data = [{
         
           title: "Reweighting Technique in Molecular Simulations: From Umbrella Sampling to MBAR",
         
-        description: "Enhanced Sampling 1",
+        description: "An introduction to importance sampling and reweighting techniques in molecular simulations, covering umbrella sampling and MBAR (Multistate Bennett Acceptance Ratio).",
         section: "Posts",
         handler: () => {
           
