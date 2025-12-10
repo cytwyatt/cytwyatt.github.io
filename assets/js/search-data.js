@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "post-langevin-dynamics-from-wiener-process-to-stochastic-differential-equations",
+        },{id: "post-practical-implementation-of-langevin-dynamics",
+        
+          title: "Practical Implementation of Langevin Dynamics",
+        
+        description: "An intuitive introduction to stochastic differential equations, starting from the Wiener process and progressing to Itô&#39;s lemma, the Fokker-Planck equation, and Langevin dynamics.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/langevin-dynamic2/";
+          
+        },
+      },{id: "post-langevin-dynamics-from-wiener-process-to-stochastic-differential-equations",
         
           title: "Langevin Dynamics: From Wiener Process to Stochastic Differential Equations",
         
@@ -52,7 +63,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/langevin-dynamics/";
+            window.location.href = "/blog/2025/langevin-dynamics1/";
           
         },
       },{id: "post-opes-and-implementation-in-toy-model",
