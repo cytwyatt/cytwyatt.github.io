@@ -638,8 +638,8 @@ Note that when a potential $U(x)$ is present, the Langevin dynamics are describe
 $$
 \left\{
 \begin{aligned}
-    dX_t &= V_t dt \\
-    dV_t &= -\frac{U'(X_t)}{m}dt - \gamma V_t dt + \sqrt{\frac{2\gamma k_BT}{m}}dW_t
+    dx_t &= v_t dt \\
+    dv_t &= -\frac{U'(x_t)}{m}dt - \gamma v_t dt + \sqrt{\frac{2\gamma k_BT}{m}}dW_t
 \end{aligned}
 \right.
 $$
