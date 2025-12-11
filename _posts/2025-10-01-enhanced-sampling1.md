@@ -6,6 +6,8 @@ description: "An introduction to importance sampling and reweighting techniques 
 tags: Simulation Math Sampling MD
 categories: Academic
 related_posts: true
+toc:
+  beginning: true
 ---
 
 This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling). 

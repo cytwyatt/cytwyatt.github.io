@@ -5,6 +5,8 @@ description: "An intuitive introduction to stochastic differential equations, st
 tags: Math MD
 categories: Academic
 date: 2025-12-09
+toc:
+  beginning: true
 ---
 
 Welcome to my personal notes on **Stochastic Differential Equations (SDEs)**. We will begin with one of the simplest stochastic processes, the **Wiener process (or Brownian motion)**, and progress to **Itô's lemma** and the **Fokker-Planck equation**. By the end of this post, we will discuss how **Langevin dynamics** can be used to sample the correct **Boltzmann distribution** as a practical application of the Fokker-Planck equation.

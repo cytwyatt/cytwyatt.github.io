@@ -6,6 +6,8 @@ description: "Understanding collective variables (CVs) and how to estimate free 
 tags: Simulation Sampling MD
 categories: Academic
 related_posts: true
+toc:
+  beginning: true
 ---
 
 This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling). 

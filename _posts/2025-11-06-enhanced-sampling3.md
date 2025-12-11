@@ -6,6 +6,8 @@ description: "A practical guide to On-the-fly Probability Enhanced Sampling (OPE
 tags: Simulation Sampling MD
 categories: Academic
 related_posts: true
+toc:
+  beginning: true
 ---
 
 This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling), [paper for OPES](https://pubs.acs.org/doi/10.1021/acs.jpclett.0c00497) and [PLUMED implementaion of OPES](https://arxiv.org/abs/2410.18019). You can find the whole code [here](https://cytwyatt.github.io/Toy-OPES/).

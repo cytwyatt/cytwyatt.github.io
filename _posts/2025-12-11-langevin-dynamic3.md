@@ -5,6 +5,8 @@ description: "We often treat the 'normalization constant' in deep learning as a 
 tags: Math MD DeepLearning
 categories: Academic
 date: 2025-12-11
+toc:
+  beginning: true
 ---
 
 This post demonstrates another important application of Langevin dynamics, particularly within the context of diffusion models.

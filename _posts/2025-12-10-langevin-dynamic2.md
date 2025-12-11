@@ -5,6 +5,8 @@ description: "An intuitive introduction to stochastic differential equations, st
 tags: Math MD
 categories: Academic
 date: 2025-12-10
+toc:
+  beginning: true
 ---
 
 This post is a continuation of our previous discussion, where we demonstrated why Langevin Dynamics correctly samples from the canonical ensemble. Here, we move from theory to practice and explore how to actually implement Langevin Dynamics (often called a Langevin Integrator) in simulation.
