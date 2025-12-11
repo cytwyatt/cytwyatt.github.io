@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "post-practical-implementation-of-langevin-dynamics",
+        },{id: "post-langevin-sampling-and-score-matching",
+        
+          title: "Langevin Sampling and Score Matching",
+        
+        description: "We often treat the &#39;normalization constant&#39; in deep learning as a mathematical headache. But by looking at it through the lens of physics, we find a solution. This post breaks down how Langevin dynamics allows us to bypass the intractable integral and generate data using the &#39;score function&#39;—physics&#39; answer to generative modeling.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/langevin-dynamic3/";
+          
+        },
+      },{id: "post-practical-implementation-of-langevin-dynamics",
         
           title: "Practical Implementation of Langevin Dynamics",
         
