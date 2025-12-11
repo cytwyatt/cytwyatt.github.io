@@ -21,12 +21,12 @@ Prerequisites: [Langevin Dynamics: From Wiener Process to Stochastic Differentia
 
 ## Introduction
 
-In generative modeling, we begin with a dataset $\{x_i\}_{i=1}^n$ originating from an underlying distribution $p(x)$. The goal is to train a neural network $p_\theta(x)$, parameterized by $\theta$, to approximate this true distribution. If the network successfully learns to mimic $p(x)$, we can then draw samples from $p_\theta(x)$ to produce new, artificially generated data.
+In generative modeling, we begin with a dataset $\\{x\_i\\}\_{i=1}^n$ originating from an underlying distribution $p(x)$. The goal is to train a neural network $p\_\theta(x)$, parameterized by $\theta$, to approximate this true distribution. If the network successfully learns to mimic $p(x)$, we can then draw samples from $p\_\theta(x)$ to produce new, artificially generated data.
 
 While this approach sounds promising, effectively modeling the true distribution directly is often impossible. To understand why, consider the standard Maximum Likelihood Estimation (MLE) objective, where we aim to maximize the log-likelihood of the observed data with respect to $\theta$:
 
 $$
-    \hat{\theta} = \mathrm{argmax}_{\theta}\sum_{i=1}^n \log p_\theta(x_i)
+    \hat{\theta} = \operatorname*{argmax}_{\theta}\sum_{i=1}^n \log p_\theta(x_i)
 $$
 
 The difficulty arises when we define the probability density $p_\theta(x)$. To ensure it is a valid probability distribution, it must sum (or integrate) to one. Therefore, the model is typically expressed as an unnormalized energy function $f_\theta(x)$ divided by a normalization constant:
@@ -123,7 +123,7 @@ $$
     = \left[ s_\theta(x) p_{\mathrm{data}}(x) \right]_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \nabla_x s_\theta(x) p_{\mathrm{data}}(x) dx
 $$
 
-We assume that the data density vanishes at the boundaries of the domain (i.e., $p_{\mathrm{data}}(x) \to 0$ as $|x| \to \infty$). Consequently, the boundary term becomes zero. We are left with:
+We assume that the data density vanishes at the boundaries of the domain (i.e., $p_{\mathrm{data}}(x) \to 0$ as $\|x\| \to \infty$). Consequently, the boundary term becomes zero. We are left with:
 
 $$
 \begin{aligned}
