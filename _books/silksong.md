@@ -6,11 +6,13 @@ cover: assets/img/book_covers/Silksong_cover.png
 categories: Metroidvania Difficult Indie Souls-like 2D
 tags: MustPlay
 released: Sep 4, 2025
+date: 2025-09-11
 started: 2025-09-11
 finished: 2025-09-29
 time_played: "57.1h"
 stars: 4.5
 status: Finished
+type: game
 ---
 
 先说背景，前作是我接触的第一款恶魔城，只打了空洞骑士一个结局，白宫过了，神居没打，苦痛之路第一段跳了一个小时都没过去就放弃了。丝之歌我玩的第二款恶魔城，在花了57小时通关所有结局，100%通关之后，游戏带给我的快乐与惊喜远远超过了恶意。作为一个热衷于探索的玩家，丝之歌的地图设计是最戳我xp的。箱庭式设计，捷径，各区域之间的通路（苔栖乡坐电梯回到骸底镇幻视魂1教堂回到火鸡厂），刚买完地图的虚线区域，探索完一片区域后地图上的缺口，四处敲打、跳跃后发现的隐藏地点（谁懂听到隐藏音效那瞬间的兴奋感），以及解锁一个新能力后，原先被打上图钉的地方，都是驱动我探索下去的动力。
