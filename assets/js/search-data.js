@@ -190,6 +190,13 @@ ninja.data = [{
           window.open("https://scholar.google.com/citations?user=WDXfwU0AAAAJ", "_blank");
         },
       },{
+        id: 'social-steam_id',
+        title: 'Steam_id',
+        section: 'Socials',
+        handler: () => {
+          window.open("", "_blank");
+        },
+      },{
         id: 'social-wechat_qr',
         title: 'Wechat_qr',
         section: 'Socials',
@@ -197,18 +204,11 @@ ninja.data = [{
           window.open("", "_blank");
         },
       },{
-        id: 'social-custom_social1',
-        title: 'Custom_social1',
+        id: 'social-zhihu_id',
+        title: 'Zhihu_id',
         section: 'Socials',
         handler: () => {
-          window.open("https://steamcommunity.com/profiles/76561198273797849", "_blank");
-        },
-      },{
-        id: 'social-custom_social2',
-        title: 'Custom_social2',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://www.zhihu.com/people/hua-er-jie-mei-you-xue-75", "_blank");
+          window.open("", "_blank");
         },
       },{
       id: 'light-theme',
