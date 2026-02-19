@@ -410,6 +410,14 @@ ul.task-list input[type="checkbox"] {
         margin-bottom: 1rem;
       }
 
+      img.social-logo-light {
+        display: inline-block;
+      }
+
+      img.social-logo-dark {
+        display: none;
+      }
+
       svg {
         width: 3.5rem;
         height: 4rem;

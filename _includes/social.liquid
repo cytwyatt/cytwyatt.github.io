@@ -72,6 +72,8 @@
       <a href="https://open.spotify.com/user/{{ social[1] }}" title="Spotify"><i class="fa-brands fa-spotify"></i></a>
     {% when 'stackoverflow_id' %}
       <a href="https://stackoverflow.com/users/{{ social[1] }}" title="Stackoverflow"><i class="fa-brands fa-stack-overflow"></i></a>
+    {% when 'steam_id' %}
+      <a href="https://steamcommunity.com/profiles/{{ social[1] }}" title="Steam"><i class="fa-brands fa-steam"></i></a>
     {% when 'strava_userid' %}
       <a href="https://www.strava.com/athletes/{{ social[1] }}" title="Strava"><i class="fa-brands fa-strava"></i></a>
     {% when 'telegram_username' %}
@@ -96,21 +98,25 @@
       <a href="https://twitter.com/{{ social[1] }}" title="X"><i class="fa-brands fa-x-twitter"></i></a>
     {% when 'youtube_id' %}
       <a href="https://youtube.com/@{{ social[1] }}" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    {% when 'zhihu_id' %}
+      <a href="https://www.zhihu.com/people/{{ social[1] }}" title="Zhihu"><i class="fa-brands fa-zhihu"></i></a>
     {% when 'zotero_username' %}
       <a href="https://www.zotero.org/{{ social[1] }}" title="Zotero"><i class="ai ai-zotero"></i></a>
     {% else %}
+      {% assign logo_default = social[1].logo %}
+      {% assign logo_light = social[1].logo_light | default: logo_default %}
+      {% assign logo_dark = social[1].logo_dark | default: logo_default %}
       <a href="{{ social[1].url }}" title="{{ social[1].title }}">
-        {% assign file_ext = social[1].logo | split: '.' | last %}
-        {% if file_ext == 'svg' %}
-          <svg>
-            <image xlink:href="{% if social[1].logo contains '://' %}{{ social[1].logo }}{% else %}{{ social[1].logo | relative_url }}{% endif %}" />
-          </svg>
-        {% else %}
-          <img
-            src="{% if social[1].logo contains '://' %}{{ social[1].logo }}{% else %}{{ social[1].logo | relative_url }}{% endif %}"
-            alt="{{ social[1].title }}"
-          >
-        {% endif %}
+        <img
+          class="social-logo-light"
+          src="{% if logo_light contains '://' %}{{ logo_light }}{% else %}{{ logo_light | relative_url }}{% endif %}"
+          alt="{{ social[1].title }}"
+        >
+        <img
+          class="social-logo-dark"
+          src="{% if logo_dark contains '://' %}{{ logo_dark }}{% else %}{{ logo_dark | relative_url }}{% endif %}"
+          alt="{{ social[1].title }}"
+        >
       </a>
   {% endcase %}
 {% endfor %}

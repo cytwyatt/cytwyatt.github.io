@@ -39,6 +39,7 @@ scholar_userid: WDXfwU0AAAAJ # your Google Scholar ID
 # semanticscholar_id: # your Semantic Scholar ID
 # spotify_id: # your spotify id
 # stackoverflow_id: # your stackoverflow id
+steam_id: 76561198273797849 # your steam profile id (number in steamcommunity.com/profiles/<steam_id>)
 # strava_userid: # your strava user id
 # telegram_username: # your Telegram user name
 # unsplash_id: # your unsplash id
@@ -49,12 +50,17 @@ wechat_qr: wechat-qr.png # filename of your wechat qr-code saved as an image (e.
 # work_url: # work page URL
 # x_username: # your X handle
 # youtube_id: # your youtube channel id (youtube.com/@<youtube_id>)
+zhihu_id: hua-er-jie-mei-you-xue-75 # your zhihu profile slug (zhihu.com/people/<zhihu_id>)
 # zotero_username: # your zotero username
-custom_social1: # can be any name here other than the ones already defined above
-  logo: https://cdn-icons-png.flaticon.com/512/3/3782.png # can be png, svg, jpg
-  title: Steam
-  url: https://steamcommunity.com/profiles/76561198273797849
-custom_social2: # can be any name here other than the ones already defined above
-  logo: https://images.icon-icons.com/3261/PNG/512/zhihu_logo_icon_206621.png # can be png, svg, jpg
-  title: Zhihu
-  url: https://www.zhihu.com/people/hua-er-jie-mei-you-xue-75
+# custom_social1: # can be any name here other than the ones already defined above
+#   logo: https://cdn-icons-png.flaticon.com/512/3/3782.png # fallback logo (also used for both themes if logo_light/logo_dark are not set)
+#   # logo_light: /assets/img/steam-light.svg # optional light-mode logo
+#   # logo_dark: /assets/img/steam-dark.svg # optional dark-mode logo
+#   title: Steam
+#   url: https://steamcommunity.com/profiles/76561198273797849
+# custom_social2: # can be any name here other than the ones already defined above
+#   logo: https://images.icon-icons.com/3261/PNG/512/zhihu_logo_icon_206621.png # fallback logo (also used for both themes if logo_light/logo_dark are not set)
+#   # logo_light: /assets/img/zhihu-light.svg # optional light-mode logo
+#   # logo_dark: /assets/img/zhihu-dark.svg # optional dark-mode logo
+#   title: Zhihu
+#   url: https://www.zhihu.com/people/hua-er-jie-mei-you-xue-75

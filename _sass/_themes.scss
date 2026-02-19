@@ -121,6 +121,16 @@ html[data-theme="dark"] {
   .only-dark {
     display: block;
   }
+
+  .social .contact-icons a {
+    img.social-logo-light {
+      display: none;
+    }
+
+    img.social-logo-dark {
+      display: inline-block;
+    }
+  }
 }
 
 html[data-theme-setting="dark"] {
