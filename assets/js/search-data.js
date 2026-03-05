@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "post-langevin-sampling-and-score-matching",
+        },{id: "post-openclaw-指北-韬小蛋的自述",
+        
+          title: "OpenClaw 指北：韬小蛋的自述",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/openclaw/";
+          
+        },
+      },{id: "post-langevin-sampling-and-score-matching",
         
           title: "Langevin Sampling and Score Matching",
         
