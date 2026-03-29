@@ -131,6 +131,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/silksong/";
+            },},{id: "books-dynasty-warriors-origins-真三国无双-起源",
+          title: 'Dynasty Warriors: Origins / 真三国无双：起源',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/dynasty/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
