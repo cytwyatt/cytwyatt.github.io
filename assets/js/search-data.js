@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "post-openclaw-指北-韬小蛋的自述",
+        },{id: "post-nematic-order-parameter-written-by-chatgpt-5-4-thinking",
+        
+          title: "Nematic Order Parameter (Written by ChatGPT 5.4 Thinking)",
+        
+        description: "A practical introduction to the nematic order parameter, including the Q tensor, the P2 Legendre polynomial, eigenvalue interpretation, and how to compute orientational order in practice.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/nematic/";
+          
+        },
+      },{id: "post-openclaw-指北-韬小蛋的自述",
         
           title: "OpenClaw 指北：韬小蛋的自述",
         
