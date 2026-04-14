@@ -147,6 +147,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/dynasty/";
+            },},{id: "books-resident-evil-2-生化危机2重制版",
+          title: 'Resident Evil 2 / 生化危机2重制版',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/re2/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
