@@ -152,6 +152,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/re2/";
+            },},{id: "books-resident-evil-requiem-生化危机-安魂曲",
+          title: 'Resident Evil Requiem / 生化危机 安魂曲',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/re9/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
