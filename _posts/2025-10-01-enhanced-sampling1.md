@@ -40,7 +40,7 @@ $$
     Z = \sum_{i} 1 \cdot \mathrm{e}^{-\beta E_i}
 $$
 
-If the exponential factor were always $1$, then $Z$ would simply count the number of accessible configurations. But the exponential factor, also called the **Boltzmann factor** or **Boltzmann weight**, assigns more importance to lower-energy states. Thus, $Z$ is not just a count, but a weighted sum that reflects how nature prefers lower-energy configurations at finite temperature.
+If the exponential factor were always $1$ (that is all configurations / states are at the same energy or so called degenerated), then $Z$ would simply count the number of accessible configurations. But the exponential factor, also called the **Boltzmann factor** or **Boltzmann weight**, assigns more importance to lower-energy states. Thus, $Z$ is not just a count, but a weighted sum that reflects how nature prefers lower-energy configurations at finite temperature.
 
 From this formula we also see a key feature of the Boltzmann distribution: all microstates with the same energy are equally probable. In other words, the probability depends only on the energy, not on any other label of the configuration.
 
