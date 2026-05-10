@@ -157,6 +157,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/re9/";
+            },},{id: "books-resident-evil-7-biohazard-生化危机7",
+          title: 'Resident Evil 7: Biohazard / 生化危机7',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/re7/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
