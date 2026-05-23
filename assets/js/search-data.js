@@ -162,6 +162,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/re7/";
+            },},{id: "books-resident-evil-village-生化危机-村庄",
+          title: 'Resident Evil Village / 生化危机 村庄',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/re8/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
