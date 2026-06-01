@@ -167,6 +167,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/re8/";
+            },},{id: "books-crimson-desert-红色沙漠",
+          title: 'Crimson Desert / 红色沙漠',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/cd/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
