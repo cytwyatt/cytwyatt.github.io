@@ -172,6 +172,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/cd/";
+            },},{id: "books-007-first-light-007-初露锋芒",
+          title: '007 First Light / 007 初露锋芒',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/007/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
