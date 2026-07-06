@@ -177,6 +177,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/007/";
+            },},{id: "books-pragmata-识质存在",
+          title: 'Pragmata / 识质存在',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/pragmata/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
