@@ -182,6 +182,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/pragmata/";
+            },},{id: "books-bloodborne-血源诅咒",
+          title: 'Bloodborne / 血源诅咒',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/bloodborne/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
