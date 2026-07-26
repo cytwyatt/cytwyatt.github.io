@@ -6,7 +6,7 @@ cover: assets/img/book_covers/Pragmata.jpg
 categories: Sci-fi Cute Action TPS Funny 3D
 tags: MustPlay
 released: April 17, 2026
-date: 2026-07-05
+date: 2026-07-05 00:00:00 -0400
 started: 2026-06-22
 finished: 2026-07-05
 time_played: "13.2h"
