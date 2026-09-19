@@ -187,6 +187,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/bloodborne/";
+            },},{id: "books-ghost-of-yōtei-羊蹄山之魂",
+          title: 'Ghost of Yōtei / 羊蹄山之魂',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/yotei/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
