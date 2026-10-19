@@ -192,6 +192,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/yotei/";
+            },},{id: "books-onimusha-way-of-the-sword-鬼武者-剑之道",
+          title: 'Onimusha: Way of the Sword / 鬼武者：剑之道',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/onimusha/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
