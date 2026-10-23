@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/miscellaneous/";
           },
-        },{id: "post-nematic-order-parameter-written-by-chatgpt-5-4-thinking",
+        },{id: "post-velocity-verlet-symplecticity-and-energy-behavior",
+        
+          title: "Velocity Verlet: Symplecticity and Energy Behavior",
+        
+        description: "Deriving Velocity Verlet from Hamilton&#39;s equations: Liouville operators, splitting, second-order accuracy, symplecticity, energy oscillations, and how to choose a time step.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/velocity-verlet/";
+          
+        },
+      },{id: "post-nematic-order-parameter-written-by-chatgpt-5-4-thinking",
         
           title: "Nematic Order Parameter (Written by ChatGPT 5.4 Thinking)",
         
