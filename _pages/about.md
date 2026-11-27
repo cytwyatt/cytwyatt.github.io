@@ -11,7 +11,6 @@ profile:
   more_info: >
     <p>Rochester, NY, USA<br> Photoed in Osaka, Japan</p>
 
-
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
@@ -26,6 +25,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I’m a second-year PhD student in the [Department of Chemical and Sustainability Engineering](https://www.hajim.rochester.edu/che/) at the University of Rochester. Before that, I earned my B.S. from the [College of Chemistry and Chemical Engineering](https://chem.xmu.edu.cn/en/) at Xiamen University.  
+I’m a second-year PhD student in the [Department of Chemical and Sustainability Engineering](https://www.hajim.rochester.edu/che/) at the University of Rochester. Before that, I earned my B.S. from the [College of Chemistry and Chemical Engineering](https://chem.xmu.edu.cn/en/) at Xiamen University.
 
 Right now, I’m working on molecular dynamics simulations of membrane-related processes. I also have some experience in AI4Science and love seeing how machine learning can help with scientific discovery. From time to time, I’ll share personal thoughts and reflections on basic science topics here on my site.

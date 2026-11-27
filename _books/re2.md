@@ -19,6 +19,6 @@ type: game
 
 ---
 
-A masterfully designed *Resident Evil* title, featuring compact, intricately crafted “box garden” style map design worthy of a place in gaming history. Paired with the series’ classic grid-based inventory management and a perfectly balanced horror atmosphere, it became the best-selling game in the *Resident Evil* franchise.
+A masterfully designed _Resident Evil_ title, featuring compact, intricately crafted “box garden” style map design worthy of a place in gaming history. Paired with the series’ classic grid-based inventory management and a perfectly balanced horror atmosphere, it became the best-selling game in the _Resident Evil_ franchise.
 
 Its one notable flaw is that there are some unreasonable conflicts between the A-side and B-side story routes, but that does little to diminish its overall quality. The flaws do not outweigh the strengths. And that final, feel-good true ending left even this corpse feeling warm inside.

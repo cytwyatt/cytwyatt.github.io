@@ -10,7 +10,7 @@ toc:
   beginning: true
 ---
 
-This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling). 
+This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling).
 
 Prerequisite: Basic Molecular Dynamics, Thermodynamics, Probability Theory.
 
@@ -51,7 +51,7 @@ In statistical mechanics, an ensemble is a collection of hypothetical copies of 
 In a molecular system, the microscopic configuration is determined by the continuous positions $\mathbf{x}$ and momenta $\mathbf{p}$ (note that if the system has $N$ particles, the dimension of both $\mathbf{x}$ and $\mathbf{p}$ is $3N$). Thus we can rewrite the Boltzmann distribution as
 
 $$
-    p(\mathbf{x}, \mathbf{p}) = 
+    p(\mathbf{x}, \mathbf{p}) =
     \frac{\mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)}}
          {\iint \mathrm{e}^{-\beta \left(U(\mathbf{x}) + K(\mathbf{p})\right)} \, \mathrm{d}\mathbf{x} \, \mathrm{d}\mathbf{p}}
 $$
@@ -73,7 +73,7 @@ where $Z$ is the configurational partition function. Note that $Z$ is a muitl-di
 Often, we are interested in how to measure a physical observable $O$ in a given ensemble. From probability theory, we can calculate its expectation value as
 
 $$
-    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x} 
+    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x}
     = \frac{\int O(\mathbf{x}) \, \mathrm{e}^{-\beta U(\mathbf{x})} \, \mathrm{d}\mathbf{x}}
            {\int \mathrm{e}^{-\beta U(\mathbf{x})} \, \mathrm{d}\mathbf{x}}
 $$
@@ -81,7 +81,7 @@ $$
 However, for most systems beyond the trivial cases, evaluating this integral exactly is impossible, and we must seek approximations. Suppose that we can somehow sample from the Boltzmann distribution (we will return to sampling methods later). In that case, we can use **Monte Carlo integration** to approximate the expectation value (I will use equal sign in the rest of the post, but keep on mind this is an approximation and the error decreases as the increase of samples. Meanwhile the convergence is only guaranteed for ergodic system, which is not always true):
 
 $$
-    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x} 
+    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x}
     \approx \frac{1}{N} \sum_{n=1}^N O(\mathbf{x}_n),\quad\mathbf{x}_n\sim p(\mathbf{x})
 $$
 
@@ -92,7 +92,7 @@ Everything looks good, but the problem is that we cannot efficiently sample from
 Suppose we want to measure an observable $O$ under distribution $p(\mathbf{x})$, and we can find another proposal distribution $q(\mathbf{x})$. Then
 
 $$
-    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x} 
+    \langle O \rangle_p = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \mathrm{d}\mathbf{x}
     = \int O(\mathbf{x}) \, p(\mathbf{x}) \, \frac{q(\mathbf{x})}{q(\mathbf{x})} \, \mathrm{d}\mathbf{x}
     = \int O(\mathbf{x}) \, \frac{p(\mathbf{x})}{q(\mathbf{x})} \, q(\mathbf{x}) \, \mathrm{d}\mathbf{x}
     = \frac{1}{N} \sum_{n=1}^N O(\mathbf{x}_n) \, \frac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}, \quad \mathbf{x}_n \sim q(\mathbf{x})
@@ -112,7 +112,7 @@ $$
     \langle O \rangle _p = \left\langle O \frac{p}{q}\right\rangle _q
 $$
 
-This means that if we want to measure an observable $O$ under distribution $p$, instead of sampling directly from $p$, we can sample from another distribution $q$. The expectation value of $O$ is then obtained as the average of $O(\mathbf{x}_n)$ weighted by the factor $\tfrac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}$. 
+This means that if we want to measure an observable $O$ under distribution $p$, instead of sampling directly from $p$, we can sample from another distribution $q$. The expectation value of $O$ is then obtained as the average of $O(\mathbf{x}_n)$ weighted by the factor $\tfrac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}$.
 
 This is a very powerful technique, and it is valid for any observable $O$ and for any pair of distributions $p$ and $q$. The effectiveness of the method depends on how well $q$ approximates $p$. If the ratio $\tfrac{p(\mathbf{x}_n)}{q(\mathbf{x}_n)}$ fluctuates too much, the estimator will become very noisy. Of course, finding a suitable $q$ that both approximates $p$ well and is easy to sample from is not trivial — but before worrying about that, let's first look at some examples of how to use it.
 
@@ -207,7 +207,7 @@ $$
     p_m(\mathbf{x}) = \sum_{i=1}^k \frac{N_i}{N}\, p_i(\mathbf{x}).
 $$
 
-This reflects the fact that, when pooling all the data, a fraction $\tfrac{N_i}{N}$ of the total samples originates from distribution $p_i$.  
+This reflects the fact that, when pooling all the data, a fraction $\tfrac{N_i}{N}$ of the total samples originates from distribution $p_i$.
 
 Now, how can we recover the expectation value of an observable $O$ under the unbiased distribution $p$? By analogy with the single-bias case, we have
 
@@ -260,7 +260,7 @@ $$
     {\sum\limits_{j=1}^k \tfrac{N_j}{N}\, \exp\!\big[\beta(A_j - U_j(\mathbf{x}_n))\big]}.
 $$
 
-These equations can be solved self-consistently to determine $\{A_i\}$. In practice, this procedure is implemented in efficient algorithms such as [pymbar](https://github.com/choderalab/pymbar).  
+These equations can be solved self-consistently to determine $\{A_i\}$. In practice, this procedure is implemented in efficient algorithms such as [pymbar](https://github.com/choderalab/pymbar).
 
 Finally, the unbiased expectation value is recovered as
 
@@ -281,7 +281,7 @@ This is the central result of **MBAR (Multistate Bennett Acceptance Ratio)**, wh
 
 ## Conclusion
 
-In this post, we explored the theoretical background of reweighting techniques and importance sampling in molecular simulations. These methods provide the foundation for correcting biased ensembles and recovering unbiased thermodynamic properties, even when direct sampling is impractical. 
+In this post, we explored the theoretical background of reweighting techniques and importance sampling in molecular simulations. These methods provide the foundation for correcting biased ensembles and recovering unbiased thermodynamic properties, even when direct sampling is impractical.
 
 In the next post, I will present concrete examples and applications to show how these ideas are implemented in practice.
 

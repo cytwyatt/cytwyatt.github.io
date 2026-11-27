@@ -30,6 +30,7 @@ type: game
 总的来说，丝之歌在前作的基础上，又构建了一个细节拉满的虫子世界，有着各种有血有肉的NPC。在我57小时的游玩中，至少有45小时都是纯粹的快乐。剩下的槽点，希望后续补丁能慢慢修复。
 
 ---
+
 The following text is translated from Chinese using ChatGPT.
 
 Let me start with some background. Hollow Knight was my very first Metroidvania. I only finished one ending back then: I cleared the White Palace, skipped Godhome, and gave up on the Path of Pain after an hour of trying to get through the very first section. Silksong was my second Metroidvania, and after spending 57 hours to see every ending and get a 100% completion, I can honestly say the joy and surprises it gave me far outweighed the frustration.

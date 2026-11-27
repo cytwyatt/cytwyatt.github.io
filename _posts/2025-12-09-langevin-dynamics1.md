@@ -113,21 +113,21 @@ $$
 
 By setting $\sigma=1$, we can formally define the **standard Wiener process**, denoted as $W_t$, with the following properties:
 
-* **Initialization:** $W_0=0$
+- **Initialization:** $W_0=0$
 
-* **Normality:** $W_t$ is normally distributed with mean $0$ and variance $t$:
+- **Normality:** $W_t$ is normally distributed with mean $0$ and variance $t$:
 
-    $$
-    W_t \sim \mathcal{N}(0, t)
-    $$
+  $$
+  W_t \sim \mathcal{N}(0, t)
+  $$
 
-* **Independent Increments:** For any disjoint time intervals $(t_1, t_2)$ and $(s_1, s_2)$, the increments $W_{t_2}-W_{t_1}$ and $W_{s_2}-W_{s_1}$ are independent random variables.
+- **Independent Increments:** For any disjoint time intervals $(t_1, t_2)$ and $(s_1, s_2)$, the increments $W_{t_2}-W_{t_1}$ and $W_{s_2}-W_{s_1}$ are independent random variables.
 
-* **Stationary Increments:** The probability distribution of the increment $W_{t+s}-W_{s}$ depends only on the time difference $t$. It follows the same distribution as $W_t$:
+- **Stationary Increments:** The probability distribution of the increment $W_{t+s}-W_{s}$ depends only on the time difference $t$. It follows the same distribution as $W_t$:
 
-    $$
-    W_{t+s}-W_{s} \sim \mathcal{N}(0, t)
-    $$
+  $$
+  W_{t+s}-W_{s} \sim \mathcal{N}(0, t)
+  $$
 
 An interesting and defining property of the Wiener process is its covariance function, $\mathrm{cov}(W_{t_1}, W_{t_2})$. Since the expectation $\mathbb{E}[W_t] = 0$ for all $t$, the covariance definition simplifies to the expectation of the product:
 
@@ -192,29 +192,33 @@ $$
     (df(x))^2 \propto (dx)^2 = o(dx)
 $$
 
-In the limit where $dx \to 0$, $(dx)^2$ becomes negligible compared to $dx$, allowing us to discard second-order terms. However, for a Wiener process, **$(dW_t)^2$ is of the same scale as $dt$**. It is *not* negligible.
+In the limit where $dx \to 0$, $(dx)^2$ becomes negligible compared to $dx$, allowing us to discard second-order terms. However, for a Wiener process, **$(dW_t)^2$ is of the same scale as $dt$**. It is _not_ negligible.
 
 As a consequence, we must retain second-order terms in our expansions. This leads to the specific multiplication rules of Stochastic Calculus:
 
-* **The Expectation is Zero:**
-    $$
-    \mathbb{E}[dW_t]=0
-    $$
+- **The Expectation is Zero:**
 
-* **The Variance (The Non-Zero Quadratic Variation):**
-    $$
-    \mathbb{E}[(dW_t)^2]=dt
-    $$
-    For the purpose of calculation within integrals, we treat this deterministically:
-    $$
-    (dW_t)^2 = dt
-    $$
+  $$
+  \mathbb{E}[dW_t]=0
+  $$
 
-* **Cross Terms Vanish:**
-    Mixed terms involving higher powers of $dt$ become negligible:
-    $$
-    dW_t \cdot dt = 0
-    $$
+- **The Variance (The Non-Zero Quadratic Variation):**
+
+  $$
+  \mathbb{E}[(dW_t)^2]=dt
+  $$
+
+  For the purpose of calculation within integrals, we treat this deterministically:
+
+  $$
+  (dW_t)^2 = dt
+  $$
+
+- **Cross Terms Vanish:**
+  Mixed terms involving higher powers of $dt$ become negligible:
+  $$
+  dW_t \cdot dt = 0
+  $$
 
 Note that though we can define the infinitesimal increment, the Wiener process is nowhere differentiable, because
 
@@ -236,8 +240,8 @@ $$
 
 This equation describes how the system will evolve over an infinitesimal time step $dt$. It consists of two parts:
 
-* Drift Term $\mu dt$: This is the deterministic part of the motion, which represents the standard laws of physics (like force) that drive the system.
-* Diffusion Term $\sigma dW_t$: This is the stochastic part. It represents the random noise or fluctuations interacting with the system.
+- Drift Term $\mu dt$: This is the deterministic part of the motion, which represents the standard laws of physics (like force) that drive the system.
+- Diffusion Term $\sigma dW_t$: This is the stochastic part. It represents the random noise or fluctuations interacting with the system.
 
 Note that, since $\frac{dW}{dt}$ is undefined, the SDE is actually shorthand notation for an integral equation:
 
@@ -245,7 +249,7 @@ $$
     X_t=X_0+\int_0^t\mu(X_s,s)ds+\int_0^t\sigma(X_s,s)dW_s \tag{2}
 $$
 
-The first integral (Riemann) is standard, but the result of the second integral (stochastic) depends entirely on the specific definition of the integration rule we choose. 
+The first integral (Riemann) is standard, but the result of the second integral (stochastic) depends entirely on the specific definition of the integration rule we choose.
 
 ### Itô vs Stratonovich Integrals
 
@@ -302,17 +306,19 @@ $$
 
 This leads to two distinct interpretations:
 
-* **Itô Integral ($\alpha=0$):** We evaluate at the left endpoint (past information).
-    $$
-    I = \frac{1}{2}W_T^2 - \frac{1}{2}T
-    $$
-    There is an additional correction term ($-\frac{1}{2}T$). Because of the existence of this term, standard calculus rules fail, and we must modify the chain rule, which leads to **Itô's Lemma**.
+- **Itô Integral ($\alpha=0$):** We evaluate at the left endpoint (past information).
 
-* **Stratonovich Integral ($\alpha=\frac{1}{2}$):** We evaluate at the midpoint.
-    $$
-    I = \frac{1}{2}W_T^2 + \left(\frac{1}{2}-\frac{1}{2}\right)T = \frac{1}{2}W_T^2
-    $$
-    The result matches standard calculus.
+  $$
+  I = \frac{1}{2}W_T^2 - \frac{1}{2}T
+  $$
+
+  There is an additional correction term ($-\frac{1}{2}T$). Because of the existence of this term, standard calculus rules fail, and we must modify the chain rule, which leads to **Itô's Lemma**.
+
+- **Stratonovich Integral ($\alpha=\frac{1}{2}$):** We evaluate at the midpoint.
+  $$
+  I = \frac{1}{2}W_T^2 + \left(\frac{1}{2}-\frac{1}{2}\right)T = \frac{1}{2}W_T^2
+  $$
+  The result matches standard calculus.
 
 For the remainder of these notes, we will primarily use the **Itô integral**, as it respects causality.
 
@@ -354,8 +360,11 @@ $$
 
 Substituting this result back into the Taylor expansion, we arrive at the fundamental formula of Stochastic Calculus, **Itô's Lemma**:
 
->$$
+> $$
+> $$
+
     df(X_t,t) = \left( \frac{\partial f}{\partial t} + \mu\frac{\partial f}{\partial x} + \frac{1}{2}\sigma^2\frac{\partial^2f}{\partial x^2} \right)dt + \sigma \frac{\partial f}{\partial x}dW_t \tag{3}
+
 $$
 
 The term $\frac{1}{2}\sigma^2\frac{\partial^2 f}{\partial x^2}$ is known as the **Itô correction**. It represents the drift induced by the convexity of the function $f$ combined with the variance of the process.
@@ -365,41 +374,53 @@ The term $\frac{1}{2}\sigma^2\frac{\partial^2 f}{\partial x^2}$ is known as the 
 We can also convert a Stratonovich SDE to an Itô SDE. Let's denote the **Stratonovich SDE** as:
 
 $$
+
     dX_t = \mu(X_t,t)dt + \sigma(X_t,t)\circ dW_t \tag{4}
+
 $$
 
 The difference arises from how we approximate the stochastic integral term $\int \sigma \circ dW$. Recall that the Stratonovich integral evaluates $\sigma$ at the midpoint $\bar{X}=\frac{X_t+X_{t+dt}}{2}$. We can approximate $\sigma (\bar{X})$ using a first-order Taylor expansion around $X_t$:
 
 $$
+
     \sigma(\bar{X}) \approx \sigma(X_t) + \sigma'(X_t)(\bar{X}-X_t) \approx \sigma(X_t) + \sigma'(X_t)\frac{1}{2}dX_t
+
 $$
 
 Substituting this approximation back into the noise term, and recalling that $dX_t \approx \sigma(X_t)dW_t$ for the leading order terms:
 
 $$
+
 \begin{aligned}
-    \sigma(X_t,t)\circ dW_t = \sigma(\bar{X})dW_t &\approx \left[\sigma(X_t) + \frac{1}{2}\sigma'(X_t)(\mu dt + \sigma(X_t)dW_t)\right]dW_t \\
-    &= \sigma(X_t)dW_t + \underbrace{\frac{1}{2}\mu\sigma'(dt)(dW_t)}_{\approx 0} + \frac{1}{2}\sigma(X_t)\sigma'(X_t)\underbrace{(dW_t)^2}_{dt} \\
-    &= \sigma(X_t)dW_t + \frac{1}{2}\sigma(X_t)\sigma'(X_t)dt
+\sigma(X_t,t)\circ dW_t = \sigma(\bar{X})dW_t &\approx \left[\sigma(X_t) + \frac{1}{2}\sigma'(X_t)(\mu dt + \sigma(X_t)dW_t)\right]dW_t \\
+&= \sigma(X_t)dW_t + \underbrace{\frac{1}{2}\mu\sigma'(dt)(dW_t)}_{\approx 0} + \frac{1}{2}\sigma(X_t)\sigma'(X_t)\underbrace{(dW_t)^2}_{dt} \\
+&= \sigma(X_t)dW_t + \frac{1}{2}\sigma(X_t)\sigma'(X_t)dt
 \end{aligned}
+
 $$
 
 Thus, we have the relationship:
 
 $$
+
     \sigma\circ dW_t = \sigma dW_t + \frac{1}{2}\sigma\sigma'dt
+
 $$
 
 Consequently, the original Stratonovich SDE
 
 $$
+
     dX_t = \mu(X_t,t)dt + \sigma(X_t,t)\circ dW_t
+
 $$
 
 is equivalent to the **Itô SDE**:
 
 $$
+
     dX_t = \left(\mu(X_t,t) + \frac{1}{2}\sigma(X_t,t)\frac{\partial\sigma}{\partial x}\right)dt + \sigma(X_t,t)dW_t \tag{5}
+
 $$
 
 ## Fokker-Planck Equation
@@ -409,7 +430,9 @@ $$
 As a direct application of Itô's lemma, we can derive a deterministic partial differential equation that describes the time evolution of the probability density, starting from the SDE:
 
 $$
+
     dX_t = \mu(X_t,t)dt + \sigma(X_t,t)dW_t
+
 $$
 
 While the trajectory of a single particle $X_t$ is random and jagged, the evolution of the **probability distribution** $p(x,t)$ of finding the particle at a specific location is deterministic and smooth. To derive this relationship, we consider the time evolution of an arbitrary smooth test function $f(X_t)$, which doesn't explicitly depend on time.
@@ -417,22 +440,28 @@ While the trajectory of a single particle $X_t$ is random and jagged, the evolut
 By Itô's lemma, we can write
 
 $$
+
 \begin{aligned}
-    df(X_t) &= \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}dX_t + \frac{1}{2}\frac{\partial^2 f}{\partial x^2}(dX_t)^2 \\
-    &= \left(\mu(x,t) \frac{\partial f}{\partial x} + \frac{1}{2}\sigma^2(x,t) \frac{\partial^2 f}{\partial x^2} \right)dt + \sigma \frac{\partial f}{\partial x} dW_t
+df(X_t) &= \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}dX_t + \frac{1}{2}\frac{\partial^2 f}{\partial x^2}(dX_t)^2 \\
+&= \left(\mu(x,t) \frac{\partial f}{\partial x} + \frac{1}{2}\sigma^2(x,t) \frac{\partial^2 f}{\partial x^2} \right)dt + \sigma \frac{\partial f}{\partial x} dW_t
 \end{aligned}
+
 $$
 
 To find the equation for the probability density $p(x,t)$, we take the expectation $\mathbb{E}[\cdot]$ of the entire equation. Since the expectation of the Wiener increment is zero ($\mathbb{E}[dW_t]=0$), the stochastic term vanishes:
 
 $$
+
     \frac{d}{dt}\mathbb{E}[f(X_t)] = \mathbb{E}\left[ \mu(X_t,t)\frac{\partial f}{\partial x} + \frac{1}{2}\sigma^2(X_t,t)\frac{\partial^2 f}{\partial x^2} \right]
+
 $$
 
 We can rewrite these expectations as integrals over the state space. By definition, $\mathbb{E}[g(X)] = \int g(x)p(x,t)dx$. Therefore:
 
 $$
+
     \int_{-\infty}^{\infty} f(x) \frac{\partial p(x,t)}{\partial t} dx = \int_{-\infty}^{\infty} \left[ \mu(x,t)\frac{\partial f}{\partial x} + \frac{1}{2}\sigma^2(x,t)\frac{\partial^2 f}{\partial x^2} \right] p(x,t) dx
+
 $$
 
 The goal is to isolate $f(x)$. We use **Integration by Parts** to move the spatial derivatives from the test function $f$ onto the density $p$. We assume that the probability density and its flux vanish at the boundaries ($x \to \pm \infty$).
@@ -440,22 +469,28 @@ The goal is to isolate $f(x)$. We use **Integration by Parts** to move the spati
 **1. The Drift Term (One integration by parts):**
 
 $$
+
     \int_{-\infty}^{\infty} \left(\mu p\right) \frac{\partial f}{\partial x} dx = \underbrace{\left[ \mu p f \right]_{-\infty}^{\infty}}_{0} - \int_{-\infty}^{\infty} f(x) \frac{\partial}{\partial x}(\mu p) dx
+
 $$
 
 **2. The Diffusion Term (Two integrations by parts):**
 
 $$
+
 \begin{aligned}
-    \int_{-\infty}^{\infty} \left(\frac{1}{2}\sigma^2 p\right) \frac{\partial^2 f}{\partial x^2} dx &= \underbrace{\left[ \dots \right]_{-\infty}^{\infty}}_{0} - \int_{-\infty}^{\infty} \frac{\partial}{\partial x}\left(\frac{1}{2}\sigma^2 p\right) \frac{\partial f}{\partial x} dx \\
-    &= \underbrace{\left[ \dots \right]_{-\infty}^{\infty}}_{0} + \int_{-\infty}^{\infty} f(x) \frac{\partial^2}{\partial x^2}\left(\frac{1}{2}\sigma^2 p\right) dx
+\int_{-\infty}^{\infty} \left(\frac{1}{2}\sigma^2 p\right) \frac{\partial^2 f}{\partial x^2} dx &= \underbrace{\left[ \dots \right]_{-\infty}^{\infty}}_{0} - \int_{-\infty}^{\infty} \frac{\partial}{\partial x}\left(\frac{1}{2}\sigma^2 p\right) \frac{\partial f}{\partial x} dx \\
+&= \underbrace{\left[ \dots \right]_{-\infty}^{\infty}}_{0} + \int_{-\infty}^{\infty} f(x) \frac{\partial^2}{\partial x^2}\left(\frac{1}{2}\sigma^2 p\right) dx
 \end{aligned}
+
 $$
 
 Substituting these back into the main equation and grouping everything under one integral:
 
 $$
+
     \int_{-\infty}^{\infty} f(x) \left\{ \frac{\partial p}{\partial t} + \frac{\partial}{\partial x}[\mu(x,t) p] - \frac{\partial^2}{\partial x^2}\left[\frac{1}{2}\sigma^2(x,t) p\right] \right\} dx = 0
+
 $$
 
 Since this integral must equal zero for **any** arbitrary smooth test function $f(x)$, the term inside the brackets must be identically zero.
@@ -476,26 +511,35 @@ $$
 
 Substituting this into our result, the Fokker-Planck equation becomes:
 
->$$
+> $$
+> $$
+
     \frac{\partial p(x,t)}{\partial t} = -\frac{\partial}{\partial x}\left[ \mu(x,t) p(x,t) \right] + \frac{\partial^2}{\partial x^2}\left[ D(x,t) p(x,t) \right] \tag{7}
+
 $$
 
 This equation reveals a deep physical insight: it is exactly a **Continuity Equation**. In hydrodynamics and electromagnetism, a continuity equation expresses the conservation of a quantity (mass, charge, or in this case, probability). It states that the rate of change of a density $\rho$ is equal to the negative divergence of its corresponding flux $\mathbf{J}$:
 
 $$
+
     \frac{\partial \rho}{\partial t} = -\nabla \cdot \mathbf{J} \tag{8}
+
 $$
 
 In the 1D case of the Fokker-Planck equation, we can identify the **Probability Flux**, denoted as $J(x,t)$, by rewriting the equation as:
 
 $$
+
     \frac{\partial p}{\partial t} + \frac{\partial}{\partial x} J(x,t) = 0
+
 $$
 
 By comparing terms, we define the flux $J(x,t)$ as the sum of two distinct physical transport mechanisms:
 
 $$
+
     J(x,t) = \underbrace{\mu(x,t) p(x,t)}_{\text{Drift / Convection}} - \underbrace{\frac{\partial}{\partial x}\left[ D(x,t) p(x,t) \right]}_{\text{Diffusion}} \tag{9}
+
 $$
 
 1.  **Deterministic Convection (Drift):** The term $\mu p$ represents the probability mass being carried along by the deterministic velocity field $\mu$.
@@ -510,19 +554,25 @@ If we let the system evolve for $t \to \infty$, the probability distribution oft
 Mathematically, "stationary" means the time derivative is zero:
 
 $$
+
     \frac{\partial p(x,t)}{\partial t} = 0
+
 $$
 
 Substituting this into the Fokker-Planck equation, we get:
 
 $$
+
     0 = -\frac{\partial}{\partial x} J(x)
+
 $$
 
 This implies that the probability flux $J(x)$ must be constant everywhere in space. For a physical system confined to a finite region (where the probability vanishes at $\pm \infty$), this constant flux must be **zero**.
 
 $$
+
     J(x) = \mu(x)p_{st}(x) - \frac{d}{dx}[D(x)p_{st}(x)] = 0
+
 $$
 
 This is the condition of **Detailed Balance**: the deterministic drift current exactly cancels the diffusive spreading current at every point in space.
@@ -531,19 +581,25 @@ This is the condition of **Detailed Balance**: the deterministic drift current e
 This is now a first-order Ordinary Differential Equation (ODE). We can rearrange it to solve for $p_{st}(x)$:
 
 $$
+
     \frac{d}{dx} [D(x) p_{st}(x)] = \mu(x) p_{st}(x)
+
 $$
 
 To solve this, let's define a helper function $f(x) = D(x)p_{st}(x)$. The equation becomes $f'(x) = \frac{\mu(x)}{D(x)}f(x)$, or via separation of variables:
 
 $$
+
     \frac{f'(x)}{f(x)} = \frac{\mu(x)}{D(x)}
+
 $$
 
 Integrating both sides and exponentiating gives the general solution:
 
 $$
+
     p_{st}(x) = \frac{\mathcal{N}}{D(x)} \exp\left( \int_{x_0}^x \frac{\mu(y)}{D(y)} dy \right) \tag{10}
+
 $$
 
 *(Where $\mathcal{N}$ is a normalization constant).*
@@ -557,7 +613,9 @@ Armed with this theoretical framework, we can finally examine **Langevin Dynamic
 To understand the motivation, consider the standard Newton's equation of motion:
 
 $$
+
     m d\mathbf{v}_t = -\nabla U(\mathbf{x}_t) dt
+
 $$
 
 If we integrate this equation directly, the total energy of the system is conserved. Consequently, we sample the **Microcanonical ($NVE$) ensemble** (fixed particles, volume, and energy). However, this is often undesirable because, in experimental reality, it is much easier to control **temperature** than total energy. Therefore, we usually aim to simulate the Canonical ($NVT$) ensemble.
@@ -565,7 +623,9 @@ If we integrate this equation directly, the total energy of the system is conser
 Langevin dynamics achieves this by mathematically coupling the system to a "heat bath." The standard equation of motion is augmented with two additional terms: a friction term (representing viscous drag from the solvent) and a noise term (representing random collisions with solvent molecules).
 
 $$
+
     m d\mathbf{v}_t = \underbrace{-\nabla U(\mathbf{x}_t) dt}_{\text{Conservative Force}} - \underbrace{m\gamma \mathbf{v}_t dt}_{\text{Friction}} + \underbrace{\sqrt{2m\gamma k_B T} d\mathbf{W}_t}_{\text{Random Noise}} \tag{11}
+
 $$
 
 ### Equipartition Theorem for Free Particle
@@ -577,52 +637,68 @@ From the perspective of statistical mechanics, temperature is a macroscopic metr
 In one dimension, this relationship is expressed as:
 
 $$
+
     \frac{1}{2}m\langle v^2\rangle = \frac{1}{2}k_BT \tag{12}
+
 $$
 
 To demonstrate this, let us consider a one-dimensional **free particle** (where the potential $U(x)=0$). The velocity evolves according to the Langevin SDE:
 
 $$
+
     dv_t = -\gamma v_t dt + \sqrt{\frac{2\gamma k_BT}{m}}dW_t
+
 $$
 
 We are interested in the average kinetic energy, which depends on $v^2$. Let us define $f(v)=v^2$ and find its differential using **Itô's lemma**:
 
 $$
+
     df = d(v^2) = f'(v)dv + \frac{1}{2}f''(v)(dv)^2
+
 $$
 
 Knowing that $f'(v)=2v$ and $f''(v)=2$, and using the Itô rule $(dv_t)^2 = \frac{2\gamma k_B T}{m}dt$ (since we only keep terms of order $dt$), we substitute these into the expansion:
 
 $$
+
 \begin{aligned}
-    d(v^2) &= 2v\left(-\gamma v_t dt + \sqrt{\frac{2\gamma k_BT}{m}}dW_t\right) + \frac{1}{2}(2)\left( \frac{2\gamma k_BT}{m}dt \right) \\
-    &= \left(-2\gamma v^2 + \frac{2\gamma k_BT}{m}\right)dt + 2v\sqrt{\frac{2\gamma k_BT}{m}}dW_t
+d(v^2) &= 2v\left(-\gamma v_t dt + \sqrt{\frac{2\gamma k_BT}{m}}dW_t\right) + \frac{1}{2}(2)\left( \frac{2\gamma k_BT}{m}dt \right) \\
+&= \left(-2\gamma v^2 + \frac{2\gamma k_BT}{m}\right)dt + 2v\sqrt{\frac{2\gamma k_BT}{m}}dW_t
 \end{aligned}
+
 $$
 
 Next, we take the expectation $\mathbb{E}[\cdot]$ of both sides. Since the expectation of the Wiener increment is zero ($\mathbb{E}[dW_t]=0$), the stochastic term vanishes:
 
 $$
+
     \frac{d}{dt}\mathbb{E}[v^2] = -2\gamma\mathbb{E}[v^2] + \frac{2\gamma k_BT}{m}
+
 $$
 
 We are interested in the **equilibrium limit** ($t\to\infty$), where the system reaches a steady state and the time derivative becomes zero ($\frac{d}{dt}=0$):
 
 $$
+
     0 = -2\gamma\langle v^2\rangle + \frac{2\gamma k_BT}{m}
+
 $$
 
 Solving for the mean squared velocity $\langle v^2 \rangle$:
 
 $$
+
     \langle v^2\rangle = \frac{k_BT}{m}
+
 $$
 
 Multiplying both sides by $\frac{1}{2}m$, we recover the exact result predicted by the **Equipartition Theorem**:
 
 $$
+
     \frac{1}{2}m\langle v^2\rangle = \frac{1}{2}k_BT
+
 $$
 
 ### Sampling the Boltzmann Distribution
@@ -630,7 +706,9 @@ $$
 Finally, we demonstrate that in the presence of a conservative force, Langevin dynamics correctly samples the target **Boltzmann distribution** $p_{eq}(x,v)$, defined as:
 
 $$
+
     p_{eq}(x,v) = \mathcal{Z}^{-1} \exp \left(-\frac{\frac{1}{2}mv^2+U(x)}{k_BT}\right)
+
 $$
 
 where $\mathcal{Z}$ is the partition function.
@@ -638,21 +716,25 @@ where $\mathcal{Z}$ is the partition function.
 Note that when a potential $U(x)$ is present, the Langevin dynamics are described by a system of coupled Stochastic Differential Equations (SDEs):
 
 $$
+
 \left\{
 \begin{aligned}
-    dx_t &= v_t dt \\
-    dv_t &= -\frac{U'(x_t)}{m}dt - \gamma v_t dt + \sqrt{\frac{2\gamma k_BT}{m}}dW_t
+dx_t &= v_t dt \\
+dv_t &= -\frac{U'(x_t)}{m}dt - \gamma v_t dt + \sqrt{\frac{2\gamma k_BT}{m}}dW_t
 \end{aligned}
 \right.
+
 $$
 
 To analyze the evolution of the probability density $p(x,v,t)$, we write the corresponding Fokker-Planck equation (often called the **Klein-Kramers equation**) in the full 2D phase space:
 
 $$
+
 \begin{aligned}
-    \frac{\partial p}{\partial t} &= -\frac{\partial }{\partial x}(vp) - \frac{\partial}{\partial v}\left[\left(-\frac{U'(x)}{m}-\gamma v\right)p\right] + \frac{\gamma k_BT}{m}\frac{\partial^2p}{\partial v^2} \\
-    &= \underbrace{-\frac{\partial}{\partial x}(vp) + \frac{\partial}{\partial v}\left(\frac{U'(x)}{m}p\right)}_{\text{Hamiltonian Flow}} + \underbrace{\gamma\frac{\partial}{\partial v}(vp) + \frac{\gamma k_BT}{m}\frac{\partial^2p}{\partial v^2}}_{\text{Thermostat / Dissipation}}
+\frac{\partial p}{\partial t} &= -\frac{\partial }{\partial x}(vp) - \frac{\partial}{\partial v}\left[\left(-\frac{U'(x)}{m}-\gamma v\right)p\right] + \frac{\gamma k_BT}{m}\frac{\partial^2p}{\partial v^2} \\
+&= \underbrace{-\frac{\partial}{\partial x}(vp) + \frac{\partial}{\partial v}\left(\frac{U'(x)}{m}p\right)}_{\text{Hamiltonian Flow}} + \underbrace{\gamma\frac{\partial}{\partial v}(vp) + \frac{\gamma k_BT}{m}\frac{\partial^2p}{\partial v^2}}_{\text{Thermostat / Dissipation}}
 \end{aligned}
+
 $$
 
 ### Proof of Stationary Distribution
@@ -675,12 +757,14 @@ Now, we substitute these into the two distinct parts of the Klein-Kramers equati
 Since $x$ and $v$ are independent phase space coordinates, $v$ can be pulled out of the spatial derivative and $U'(x)$ out of the velocity derivative:
 
 $$
+
 \begin{aligned}
-    \text{Term}_1 &= -v\frac{\partial p_{eq}}{\partial x} + \frac{U'(x)}{m}\frac{\partial p_{eq}}{\partial v} \\
-    &= -v\left(-\frac{U'(x)}{k_B T} p_{eq}\right) + \frac{U'(x)}{m}\left(-\frac{mv}{k_B T} p_{eq}\right) \\
-    &= \left(\frac{v U'(x)}{k_B T} - \frac{v U'(x)}{k_B T}\right)p_{eq} \\
-    &= 0
+\text{Term}_1 &= -v\frac{\partial p_{eq}}{\partial x} + \frac{U'(x)}{m}\frac{\partial p_{eq}}{\partial v} \\
+&= -v\left(-\frac{U'(x)}{k_B T} p_{eq}\right) + \frac{U'(x)}{m}\left(-\frac{mv}{k_B T} p_{eq}\right) \\
+&= \left(\frac{v U'(x)}{k_B T} - \frac{v U'(x)}{k_B T}\right)p_{eq} \\
+&= 0
 \end{aligned}
+
 $$
 
 This confirms that the conservative forces obey Liouville's Theorem and do not alter the distribution on their own.
@@ -689,17 +773,21 @@ This confirms that the conservative forces obey Liouville's Theorem and do not a
 Let us look at the friction and noise terms:
 
 $$
+
     \text{Term}_2 = \gamma\frac{\partial}{\partial v}(vp_{eq}) + \frac{\gamma k_BT}{m}\frac{\partial}{\partial v}\left(\frac{\partial p_{eq}}{\partial v}\right)
+
 $$
 
 Substitute $\frac{\partial p_{eq}}{\partial v} = -\frac{mv}{k_B T} p_{eq}$ into the diffusion term:
 
 $$
+
 \begin{aligned}
-    \text{Term}_2 &= \gamma\frac{\partial}{\partial v}(vp_{eq}) + \frac{\gamma k_BT}{m}\frac{\partial}{\partial v}\left(-\frac{mv}{k_B T} p_{eq}\right) \\
-    &= \gamma\frac{\partial}{\partial v}(vp_{eq}) - \gamma\frac{\partial}{\partial v}(v p_{eq}) \\
-    &= 0
+\text{Term}_2 &= \gamma\frac{\partial}{\partial v}(vp_{eq}) + \frac{\gamma k_BT}{m}\frac{\partial}{\partial v}\left(-\frac{mv}{k_B T} p_{eq}\right) \\
+&= \gamma\frac{\partial}{\partial v}(vp_{eq}) - \gamma\frac{\partial}{\partial v}(v p_{eq}) \\
+&= 0
 \end{aligned}
+
 $$
 
 The friction (damping) and diffusion (noise) terms cancel each other out exactly.
@@ -709,7 +797,9 @@ The friction (damping) and diffusion (noise) terms cancel each other out exactly
 Since both parts of the equation sum to zero independently, the total time derivative is zero:
 
 $$
+
     \frac{\partial p_{eq}}{\partial t} = 0
+
 $$
 
 This proves that the Langevin dynamics equation naturally preserves the canonical Boltzmann distribution as its stationary state.
@@ -723,3 +813,4 @@ We began by deriving **Itô's Lemma**, revealing how the "jagged" nature of Brow
 Finally, we applied this framework to **Langevin Dynamics**. By analyzing the interplay between friction and thermal noise, we proved mathematically that this specific SDE naturally converges to the **Boltzmann distribution**.
 
 This rigorous foundation explains why integrators like `integrator = sd` in GROMACS or `LangevinIntegrator` in OpenMM work. The random noise isn't just interference; it is a carefully tuned mechanism that drives the simulation toward correct thermodynamic equilibrium.
+$$

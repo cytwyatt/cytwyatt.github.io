@@ -10,7 +10,7 @@ toc:
   beginning: true
 ---
 
-This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling). 
+This post is largely inspired by the materials in [3rd i-CoMSE Workshop](https://github.com/icomse/3rd_workshop_advanced_sampling).
 
 Prerequisite: Basic Molecular Dynamics, Thermodynamics, Probability Theory.
 
@@ -60,7 +60,7 @@ $$
 
 ## Estimating Free Energy from Simulation
 
-From the previous derivation, we know that estimating the free energy profile reduces to estimating the probability distribution of a given CV $p(\theta)$. A common and effective method for this is **Kernel Density Estimation (KDE)**.  
+From the previous derivation, we know that estimating the free energy profile reduces to estimating the probability distribution of a given CV $p(\theta)$. A common and effective method for this is **Kernel Density Estimation (KDE)**.
 
 If we have sampled a set of configurations and computed their corresponding CV values $\lbrace \theta(\mathbf{x}_i) \rbrace _{i=1}^M$
 , then the estimated distribution is given by
@@ -69,7 +69,7 @@ $$
 p(\theta) = \frac{1}{M} \sum_{i=1}^M K_h \big(\theta - \theta(\mathbf{x}_i)\big),
 $$
 
-where $K$ is the **kernel function**, and $h$ is the **bandwidth** (a smoothing parameter). A larger bandwidth results in a smoother estimate, while a smaller one makes the distribution appear more peaked, approaching a delta function.  
+where $K$ is the **kernel function**, and $h$ is the **bandwidth** (a smoothing parameter). A larger bandwidth results in a smoother estimate, while a smaller one makes the distribution appear more peaked, approaching a delta function.
 
 There are various choices of kernels; the most common one is the **Gaussian kernel**:
 

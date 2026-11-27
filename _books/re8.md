@@ -19,8 +19,8 @@ type: game
 
 ---
 
-My personal favorite *Resident Evil* game. The larger map and the presence of daylight make it feel much less terrifying than *Resident Evil 7*, which is a huge plus for someone like me who struggles with horror games. At the same time, this entry adds a lot more fantastical elements, which makes it especially engaging to play.
+My personal favorite _Resident Evil_ game. The larger map and the presence of daylight make it feel much less terrifying than _Resident Evil 7_, which is a huge plus for someone like me who struggles with horror games. At the same time, this entry adds a lot more fantastical elements, which makes it especially engaging to play.
 
-The story is absolutely one of the game’s biggest strengths. *Resident Evil 7*, *Village*, and the *Village* DLC together do a fantastic job of showing Ethan’s character and charisma. With just two mainline games, Ethan was elevated to the same level of emotional weight and presence as the series’ long-established protagonists.
+The story is absolutely one of the game’s biggest strengths. _Resident Evil 7_, _Village_, and the _Village_ DLC together do a fantastic job of showing Ethan’s character and charisma. With just two mainline games, Ethan was elevated to the same level of emotional weight and presence as the series’ long-established protagonists.
 
 Overall, this is a rare gem and an outstanding game.

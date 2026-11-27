@@ -21,7 +21,7 @@ type: game
 
 The high-EQ way to put it: nostalgia. The low-EQ way: recycled assets and reheated leftovers.
 
-The first half, set in the hospital, delivers that classic *Resident Evil* style of compact, interconnected “box garden” map design. It has all the sacred series traditions we know and love: finding three random objects to unlock a door, hunting down safe codes to open boxes, and searching for a fuse so you can restore the power. That is exactly my kind of thing.
+The first half, set in the hospital, delivers that classic _Resident Evil_ style of compact, interconnected “box garden” map design. It has all the sacred series traditions we know and love: finding three random objects to unlock a door, hunting down safe codes to open boxes, and searching for a fuse so you can restore the power. That is exactly my kind of thing.
 
 But the second half really falls apart and ends on a weak note. Even the nostalgia of the police station section gets diluted by the fact that it only lasts about five minutes. This game also has by far the most perfunctory final boss in the series. Can you believe the final boss fight is basically just a parry tutorial, without even any BGM?
 

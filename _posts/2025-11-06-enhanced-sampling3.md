@@ -65,18 +65,18 @@ $$
 To verify this, consider two cases:
 
 - If $U(x_j) < U(x_i)$, then
-   
+
   $$
   \frac{A(x_i \rightarrow x_j)}{A(x_j \rightarrow x_i)} = \frac{1}{\mathrm{e}^{-\beta (U(x_i) - U(x_j))}} = \mathrm{e}^{-\beta (U(x_j) - U(x_i))}.
   $$
 
 - If $U(x_j) > U(x_i)$, then
-  
+
   $$
   \frac{A(x_i \rightarrow x_j)}{A(x_j \rightarrow x_i)} = \frac{\mathrm{e}^{-\beta (U(x_j) - U(x_i))}}{1} = \mathrm{e}^{-\beta (U(x_j) - U(x_i))}.
   $$
 
-In both cases, detailed balance holds.  
+In both cases, detailed balance holds.
 
 Thus, using this acceptance criterion, we can correctly sample from the **Boltzmann distribution** via MCMC. The implementation of MCMC is extermely simple, see the following code
 
@@ -86,7 +86,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def mcmc(x0, T, potential, std=1.0):
-    """MCMC sampling algorithm.
+"""MCMC sampling algorithm.
 
     Args:
         x0: initial state
@@ -96,7 +96,7 @@ def mcmc(x0, T, potential, std=1.0):
     """
     x_new = x0 + np.random.normal(0, std) # a symmetric proposal
     delta_E = potential(x_new) - potential(x0)
-    
+
     if delta_E < 0 or np.random.rand() < np.exp(-delta_E / T):
         return x_new
     else:
@@ -111,37 +111,35 @@ We now define a double-well potential to see if MCMC can correctly sample from t
 {% highlight python linenos %}
 
 #define the potential - these can be altered.
-mean1 = 1.0  # center of first minima
-mean2 = 9.0  # center of 2nd minima
-cut1 = 4.0   # start of transition region
-cut2 = 6.0   # end of transition region
-const1 = 0.0  # value at bottom of  first minima
+mean1 = 1.0 # center of first minima
+mean2 = 9.0 # center of 2nd minima
+cut1 = 4.0 # start of transition region
+cut2 = 6.0 # end of transition region
+const1 = 0.0 # value at bottom of first minima
 const2 = -2.0 # value at bottom of second minima
-barrier = 60.0 # the value at (cut1+cut2)/2   # Barrier height
+barrier = 60.0 # the value at (cut1+cut2)/2 # Barrier height
 k1 = 5 # spring contstant of first minima
 k2 = 5 # spring constant of 2nd minima
 
 def lower_pot(x):
-    pot = k1*(x-mean1)**2 + const1  # Harmonic!
-    return pot
+pot = k1*(x-mean1)**2 + const1 # Harmonic!
+return pot
 
 def upper_pot(x):
-    pot = k2*(x-mean2)**2 + const2  # Harmonic
-    return pot
+pot = k2*(x-mean2)**2 + const2 # Harmonic
+return pot
 
 def interpolate_pot(x):
-    x1 = cut1
-    x2 = cut2
-    x3 = (cut1+cut2)/2
-    y1 = lower_pot(cut1)
-    y2 = upper_pot(cut2)
-    y3 = barrier
-    # lagrange interpolation formula for the potential barrier is
-    return y1*(x-x2)*(x-x3)/((x1-x2)*(x1-x3)) + y2*(x-x1)*(x-x3)/((x2-x1)*(x2-x3)) + y3*(x-x1)*(x-x2)/((x3-x1)*(x3-x2))
+x1 = cut1
+x2 = cut2
+x3 = (cut1+cut2)/2
+y1 = lower_pot(cut1)
+y2 = upper_pot(cut2)
+y3 = barrier # lagrange interpolation formula for the potential barrier is
+return y1*(x-x2)_(x-x3)/((x1-x2)_(x1-x3)) + y2*(x-x1)_(x-x3)/((x2-x1)_(x2-x3)) + y3*(x-x1)_(x-x2)/((x3-x1)_(x3-x2))
 
-def potential(x):
-    # define it as a piecewise potential to make it possible to vectorize.
-    return np.piecewise(x,[x<cut1,x>cut2],[lower_pot,upper_pot,interpolate_pot])
+def potential(x): # define it as a piecewise potential to make it possible to vectorize.
+return np.piecewise(x,[x<cut1,x>cut2],[lower_pot,upper_pot,interpolate_pot])
 
 {% endhighlight %}
 
@@ -165,19 +163,19 @@ Let's plot the Boltzmann distribution and free energy of this potential at diffe
 {% highlight python linenos %}
 
 x = np.linspace(-10, 20, 1000)
-Ts = [0.5, 1.0, 5.0, 20.0, 100.0]  # different temperatures
+Ts = [0.5, 1.0, 5.0, 20.0, 100.0] # different temperatures
 Es = [] # store average potential energies
 Fs = [] # store free energies
 
 for T in Ts:
-    distribution = np.exp(-potential(x)/T)
-    Z = np.trapezoid(distribution, x) # partition function
-    P = distribution / Z  # Boltzmann distribution
-    E = np.trapezoid(P * potential(x), x)  # Average energy
-    F = -T * np.log(Z)  # Free energy
-    Es.append(E)
-    Fs.append(F)
-    plt.plot(x, P, label=f'T={T}, E={E:.2f}, F={F:.2f}')
+distribution = np.exp(-potential(x)/T)
+Z = np.trapezoid(distribution, x) # partition function
+P = distribution / Z # Boltzmann distribution
+E = np.trapezoid(P * potential(x), x) # Average energy
+F = -T * np.log(Z) # Free energy
+Es.append(E)
+Fs.append(F)
+plt.plot(x, P, label=f'T={T}, E={E:.2f}, F={F:.2f}')
 
 plt.xlim([-2, 12])
 plt.legend()
@@ -191,7 +189,7 @@ plt.show()
 
 There are some interesting observations:
 
-- **At low temperature**, the probability distribution is sharply peaked around the lowest minimum (i.e., near $x = 9$). The system predominantly stays in this state since transitions to higher-energy regions are highly unlikely.  
+- **At low temperature**, the probability distribution is sharply peaked around the lowest minimum (i.e., near $x = 9$). The system predominantly stays in this state since transitions to higher-energy regions are highly unlikely.
 - **At low temperature**, the average potential energy is approximately equal to the free energy. This is because, by definition, the free energy is the potential energy minus an entropy term:
 
   $$
@@ -199,7 +197,8 @@ There are some interesting observations:
   $$
 
   At low temperature, the entropy contribution ($TS$) is small since only the ground state significantly contributes, making the free energy effectively dominated by the potential energy.
-- **At moderate temperature**, the probability becomes comparable at both minima. However, transitions between them remain rare because the probability in the barrier region between the two minima is close to zero.  
+
+- **At moderate temperature**, the probability becomes comparable at both minima. However, transitions between them remain rare because the probability in the barrier region between the two minima is close to zero.
 - **At extremely high temperature**, the probability distribution approaches a uniform shape, indicating that energy barriers become irrelevant and all configurations are equally likely to be sampled.
 
 Let's run a mcmc to see if it can correctly sample the Boltzmann distribution and calculate the observable (average potential energy).
@@ -212,14 +211,14 @@ n_step = 10000
 T = 5.0
 
 xs = []
-x = 1.0  # initial state
+x = 1.0 # initial state
 xs.append(x)
 
-Es = []  # store potential energies
+Es = [] # store potential energies
 for step in range(n_step):
-    x = mcmc(x, T, potential)
-    xs.append(x)
-    Es.append(potential(x))
+x = mcmc(x, T, potential)
+xs.append(x)
+Es.append(potential(x))
 
 kde = KernelDensity(bandwidth=0.3).fit(np.array(xs).reshape(-1, 1))
 x_d = np.linspace(-2, 12, 1000)
@@ -228,10 +227,11 @@ E_avg = np.mean(Es)
 plt.plot(x_d, np.exp(log_dens), label=f'KDE estimate, E={E_avg:.2f}')
 
 # Compare with the exact distribution
+
 distribution = np.exp(-potential(x_d)/T)
 Z = np.trapezoid(distribution, x_d) # partition function
-P = distribution / Z  # Boltzmann distribution
-E = np.trapezoid(P * potential(x_d), x_d)  # Average energy
+P = distribution / Z # Boltzmann distribution
+E = np.trapezoid(P * potential(x_d), x_d) # Average energy
 plt.plot(x_d, P, label=f'Exact distribution, E={E:.2f}')
 plt.xlim([-2, 12])
 plt.legend()
@@ -261,7 +261,7 @@ Meanwhile, the free energy barrier is reduced by a factor of $\gamma$, which can
 
 $$
 \begin{aligned}
-F^{\mathrm{WT}}(\theta) 
+F^{\mathrm{WT}}(\theta)
 &= -\frac{1}{\beta} \ln \int \mathrm{e}^{-\frac{\beta}{\gamma} U(x)} \, \delta(\theta - \theta(\mathbf{x})) \, \mathrm{d}\mathbf{x} \\[6pt]
 &= -\frac{1}{\beta} \ln \left[ \int \mathrm{e}^{-\beta U(x)} \, \delta(\theta - \theta(\mathbf{x})) \, \mathrm{d}\mathbf{x} \right]^{\frac{1}{\gamma}} \\[6pt]
 &= -\frac{1}{\gamma \beta} \ln \int \mathrm{e}^{-\beta U(x)} \, \delta(\theta - \theta(\mathbf{x})) \, \mathrm{d}\mathbf{x} \\[6pt]
@@ -283,10 +283,10 @@ x = 1.0 # initial state
 Es = [] # store potential energies
 weights = [] # store weights = p/p^WT
 for step in range(n_step):
-    x = mcmc(x, T * gamma, potential)  # note the temperature is scaled by gamma
-    xs.append(x)
-    Es.append(potential(x))
-    weights.append(np.exp(-(1 - 1/gamma) * potential(x) / T))  # weight for reweighting
+x = mcmc(x, T * gamma, potential) # note the temperature is scaled by gamma
+xs.append(x)
+Es.append(potential(x))
+weights.append(np.exp(-(1 - 1/gamma) * potential(x) / T)) # weight for reweighting
 
 kde = KernelDensity(bandwidth=0.3).fit(np.array(xs).reshape(-1, 1), sample_weight=weights)
 x_d = np.linspace(-2, 12, 1000)
@@ -295,10 +295,11 @@ E_avg = np.average(Es, weights=weights)
 plt.plot(x_d, np.exp(log_dens), label=f'KDE estimate, E={E_avg:.2f}')
 
 # Compare with the exact distribution
+
 distribution = np.exp(-potential(x_d)/T)
 Z = np.trapezoid(distribution, x_d) # partition function
 P = distribution / Z # Boltzmann distribution
-E = np.trapezoid(P * potential(x_d), x_d)  # Average
+E = np.trapezoid(P * potential(x_d), x_d) # Average
 plt.plot(x_d, P, label=f'Exact distribution, E={E:.2f}')
 plt.xlim([-2, 12])
 plt.legend()
@@ -368,12 +369,12 @@ $$
 Thus, **in the limit of convergence**, the applied bias directly yields the free-energy profile:
 $F(\theta) = -\frac{1}{1-1/\gamma}\,V(\theta)$ (up to an additive constant).
 
-The remaining practical question is: *after applying the bias, how do we obtain the unbiased $p(\theta)$?*  
+The remaining practical question is: _after applying the bias, how do we obtain the unbiased $p(\theta)$?_
 
 As discussed in the [previous post](https://cytwyatt.github.io/blog/2025/enhanced-sampling2/), we can **estimate $p(\theta)$ on the fly via reweighting**. In practice, **OPES** proceeds iteratively:
 
-1. **Update** the on-the-fly estimate $p_n(\theta)$ by **weighted KDE**.  
-2. **Update** the bias $V_n(\theta)$.  
+1. **Update** the on-the-fly estimate $p_n(\theta)$ by **weighted KDE**.
+2. **Update** the bias $V_n(\theta)$.
 3. **Sample** with the updated bias to generate new data and repeat.
 
 In implementations, one typically adds a small regularization to avoid $\,\log 0\,$ and **updates the bias smoothly** to ensure stability in the early stages. A practical update at iteration $n$ is
@@ -385,6 +386,7 @@ V_n(\theta)
 $$
 
 where:
+
 - $p_n(\theta)$ is the current on-the-fly estimate of the CV distribution,
 - $Z_n = \frac{1}{\vert\Omega\vert} \int_{\Omega} p_n(\theta) \, \mathrm{d}\theta$ normalizes $p_n$ over explored region of CV space,
 - $\epsilon>0$ is a small regularization term to prevent numerical issues.
@@ -397,8 +399,8 @@ Let's try to implement OPES on this toy model.
 
 T = 5.0
 gamma = 30.0 # bias factor
-iters = 100  # number of iterations
-n_sample = 100  # number of samples per iteration
+iters = 100 # number of iterations
+n_sample = 100 # number of samples per iteration
 epsilon = 1e-10
 xs = [] # store samples
 x = 1.0 # initial state
@@ -406,35 +408,34 @@ Es = [] # store potential energies
 weights = [] # store weights
 
 def bias(x):
-    x2d = np.atleast_1d(x).reshape(-1, 1)
-    log_p = kde.score_samples(x2d)
-    p_est = np.exp(log_p)
-    V = (1.0 - 1.0/gamma) * T * np.log(p_est + epsilon)
-    return V if x2d.shape[0] > 1 else V[0]
+x2d = np.atleast_1d(x).reshape(-1, 1)
+log_p = kde.score_samples(x2d)
+p_est = np.exp(log_p)
+V = (1.0 - 1.0/gamma) * T * np.log(p_est + epsilon)
+return V if x2d.shape[0] > 1 else V[0]
 
 def potential_biased(x):
-    return potential(x) + bias(x)
+return potential(x) + bias(x)
 
 # initialization
+
 for step in range(n_sample):
-    x = mcmc(x, T, potential)
-    xs.append(x)
-    Es.append(potential(x))
-    weights.append(1)  # weight for reweighting
+x = mcmc(x, T, potential)
+xs.append(x)
+Es.append(potential(x))
+weights.append(1) # weight for reweighting
 kde = KernelDensity(bandwidth=0.3).fit(np.array(xs).reshape(-1, 1), sample_weight=weights)
 xs = []
 Es = []
 weights = []
 
-for i in range(iters):
-    # 1. Sample
-    for step in range(n_sample):
-        # show biaed potential
-        x = mcmc(x, T, potential_biased)  # note the temperature is scaled by gamma
-        xs.append(x)
-        Es.append(potential(x))
-        weights.append(np.exp(bias(x)/T))  # weight for reweighting
-    
+for i in range(iters): # 1. Sample
+for step in range(n_sample): # show biaed potential
+x = mcmc(x, T, potential_biased) # note the temperature is scaled by gamma
+xs.append(x)
+Es.append(potential(x))
+weights.append(np.exp(bias(x)/T)) # weight for reweighting
+
     # 2. Update
     kde = KernelDensity(bandwidth=0.3).fit(np.array(xs).reshape(-1, 1), sample_weight=weights)
 
@@ -444,10 +445,11 @@ E_avg = np.average(Es, weights=weights)
 plt.plot(x_d, np.exp(log_dens), label=f'KDE estimate, E={E_avg:.2f}')
 
 # Compare with the exact distribution
+
 distribution = np.exp(-potential(x_d)/T)
 Z = np.trapezoid(distribution, x_d) # partition function
 P = distribution / Z # Boltzmann distribution
-E = np.trapezoid(P * potential(x_d), x_d)  # Average
+E = np.trapezoid(P * potential(x_d), x_d) # Average
 plt.plot(x_d, P, label=f'Exact distribution, E={E:.2f}')
 plt.xlim([-2, 12])
 plt.legend()
@@ -476,13 +478,13 @@ Both expressions are equivalent in the limit of convergence.
 x_d = np.linspace(-2, 12, 1000)
 log_dens = kde.score_samples(x_d.reshape(-1, 1))
 F_reweight = -np.log(np.exp(log_dens)) * T
-F_reweight -= F_reweight.min()  # shift to zero
+F_reweight -= F_reweight.min() # shift to zero
 
 F_bias = -1 / (1 - 1 / gamma) * bias(x_d)
-F_bias -= F_bias.min()  # shift to zero
+F_bias -= F_bias.min() # shift to zero
 
 F_exact = potential(x_d)
-F_exact -= F_exact.min()  # shift to zero
+F_exact -= F_exact.min() # shift to zero
 
 plt.plot(x_d, F_reweight, label='Free energy from reweighting')
 plt.plot(x_d, F_bias, label='Free energy from bias')
@@ -503,7 +505,7 @@ We can see that these two free energy estimates are consistent with each other a
   <img src="/assets/gif/opes_evolution.gif" width="900"/>
 </p>
 
-As we can see, the bias potential quickly becomes quasi-static, which is one of the main advantages of **OPES**. 
+As we can see, the bias potential quickly becomes quasi-static, which is one of the main advantages of **OPES**.
 
 ### Comparison with Well-Tempered Metadynamics
 
@@ -523,4 +525,4 @@ In practice, OPES is conveniently implemented in the **[PLUMED](https://www.plum
 
 - [Part 1: Reweighting Technique in Molecular Simulations](/blog/2025/enhanced-sampling1/)
 - [Part 2: Collective Variables and Free Energy Profile](/blog/2025/enhanced-sampling2/)
-- **Part 3: OPES and Implementation in Toy Model** (current) 
+- **Part 3: OPES and Implementation in Toy Model** (current)

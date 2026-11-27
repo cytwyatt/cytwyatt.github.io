@@ -875,11 +875,11 @@ Stiff vibrations and light particles tend to set this fastest timescale. In a no
 A stable trajectory can still have a large energy error. For our oscillator released from rest, the bound derived above gives:
 
 | Step $h\omega$ | Steps per period $2\pi/(h\omega)$ | Relative energy-error envelope $(h\omega)^2/4$ |
-| --- | --- | --- |
-| $0.1$ | $62.8$ | $0.25\%$ |
-| $0.2$ | $31.4$ | $1\%$ |
-| $0.5$ | $12.6$ | $6.25\%$ |
-| $1.0$ | $6.3$ | $25\%$ |
+| -------------- | --------------------------------- | ---------------------------------------------- |
+| $0.1$          | $62.8$                            | $0.25\%$                                       |
+| $0.2$          | $31.4$                            | $1\%$                                          |
+| $0.5$          | $12.6$                            | $6.25\%$                                       |
+| $1.0$          | $6.3$                             | $25\%$                                         |
 
 For instance, keeping the energy deviation below one percent requires
 

@@ -43,16 +43,16 @@ While conceptually simple, this approach fails for molecular systems. It introdu
 To solve this robustly, we break the complex Langevin equation into three distinct, analytically solvable parts. We imagine the system evolving under three separate "operators":
 
 1. **A (Drift):** The system moves at constant velocity (position update).
-    * $dx = v dt$
-    * $dv = 0$
+   - $dx = v dt$
+   - $dv = 0$
 
 2. **B (Kick):** The velocities change due to conservative forces (velocity update).
-    * $dx = 0$
-    * $dv = \frac{F(x)}{m} dt$
+   - $dx = 0$
+   - $dv = \frac{F(x)}{m} dt$
 
 3. **O (Ornstein-Uhlenbeck):** The velocities change due to the thermostat (friction + noise).
-    * $dx = 0$
-    * $dv = -\gamma v dt + \sqrt{\frac{2\gamma k_B T}{m}} dW$
+   - $dx = 0$
+   - $dv = -\gamma v dt + \sqrt{\frac{2\gamma k_B T}{m}} dW$
 
 While the first two parts are deterministic ODEs that are trivial to integrate, the third part is a Stochastic Differential Equation (SDE). We will now show how to solve this exactly.
 
@@ -145,8 +145,8 @@ The second term is a sum of Gaussian variables, which is itself a Gaussian. For 
 
 Let $I = \sigma\mathrm{e}^{-\gamma(t+\Delta t)}\int_{t}^{t+\Delta t}\mathrm{e}^{\gamma s} dW_s$.
 
-* **Mean:** $\mathbb{E}[I]=0$ (since $\mathbb{E}[dW_s]=0$).
-* **Variance:** We use the Itô Isometry we proved earlier ($\mathbb{E}[(\int fdW)^2]=\mathbb{E}[\int f^2dt]$):
+- **Mean:** $\mathbb{E}[I]=0$ (since $\mathbb{E}[dW_s]=0$).
+- **Variance:** We use the Itô Isometry we proved earlier ($\mathbb{E}[(\int fdW)^2]=\mathbb{E}[\int f^2dt]$):
 
 $$
 \begin{aligned}
@@ -173,32 +173,32 @@ This derivation leads us to the **BAOAB** scheme (Kick-Drift-Noise-Drift-Kick). 
 
 **Constants:**
 
-* $c_1 = e^{-\gamma \Delta t}$
-* $c_2 = \sqrt{\frac{k_B T}{m}(1 - c_1^2)}$
+- $c_1 = e^{-\gamma \Delta t}$
+- $c_2 = \sqrt{\frac{k_B T}{m}(1 - c_1^2)}$
 
 **The Loop (for each time step $\Delta t$):**
 
 1. **B (Half Kick):**
 
-    $$v \leftarrow v + \frac{\Delta t}{2} \frac{F(x)}{m}$$
+   $$v \leftarrow v + \frac{\Delta t}{2} \frac{F(x)}{m}$$
 
 2. **A (Half Drift):**
 
-    $$x \leftarrow x + \frac{\Delta t}{2} v$$
+   $$x \leftarrow x + \frac{\Delta t}{2} v$$
 
 3. **O (Full Noise/Friction):**
 
-    $$v \leftarrow c_1 v + c_2 \xi \quad (\xi \sim \mathcal{N}(0,1))$$
+   $$v \leftarrow c_1 v + c_2 \xi \quad (\xi \sim \mathcal{N}(0,1))$$
 
 4. **A (Half Drift):**
 
-    $$x \leftarrow x + \frac{\Delta t}{2} v$$
+   $$x \leftarrow x + \frac{\Delta t}{2} v$$
 
 5. **B (Half Kick):**
 
-    $$\text{Recalculate forces } F(x)$$
+   $$\text{Recalculate forces } F(x)$$
 
-    $$v \leftarrow v + \frac{\Delta t}{2} \frac{F(x)}{m}$$
+   $$v \leftarrow v + \frac{\Delta t}{2} \frac{F(x)}{m}$$
 
 ## Conclusion
 

@@ -15,8 +15,8 @@ status: Finished
 type: game
 ---
 
-最恐怖的一作生化危机。前半段老婆的反复突脸以及岳父岳母的追逐，压迫感直接拉满。几个情节非常猎奇变态，喜欢恐怖游戏的可以无脑入。 
+最恐怖的一作生化危机。前半段老婆的反复突脸以及岳父岳母的追逐，压迫感直接拉满。几个情节非常猎奇变态，喜欢恐怖游戏的可以无脑入。
 
 ---
 
-The scariest *Resident Evil* game, in my opinion. The first half is packed with overwhelming tension, from my wife constantly popping up in my face to the relentless pursuit from my father-in-law and mother-in-law. The sense of pressure is absolutely through the roof. Several scenes are extremely bizarre and twisted as well. If you are into horror games, this is an easy blind buy.
+The scariest _Resident Evil_ game, in my opinion. The first half is packed with overwhelming tension, from my wife constantly popping up in my face to the relentless pursuit from my father-in-law and mother-in-law. The sense of pressure is absolutely through the roof. Several scenes are extremely bizarre and twisted as well. If you are into horror games, this is an easy blind buy.

@@ -13,7 +13,7 @@ This post demonstrates another important application of Langevin dynamics, parti
 
 The core idea is that even if we do not know the exact Boltzmann distribution, we can still use Langevin dynamics to sample from it by utilizing the potential (known as the force field in molecular dynamics).
 
-We see a striking parallel in deep learning. Given training data, the true data distribution is unknown and difficult to model explicitly. This is due to the existence of the normalization factor—a high-dimensional integral known as the *partition function* in statistical mechanics.
+We see a striking parallel in deep learning. Given training data, the true data distribution is unknown and difficult to model explicitly. This is due to the existence of the normalization factor—a high-dimensional integral known as the _partition function_ in statistical mechanics.
 
 However, using the analogy of molecular dynamics, we can instead model the "force," which in statistics is known as the **score function**. This allows us to bypass modeling the true distribution explicitly. With knowledge of the score function alone, we can draw correct samples from the true distribution, forming the basis of modern generative models.
 
@@ -57,7 +57,7 @@ $$
     \nabla_x \log p_\theta(x) = -\nabla_x f_{\theta}(x)
 $$
 
-This quantity—the gradient of the log-likelihood—is known as the **score function**. It is directly analogous to the *force* in molecular dynamics. As we established earlier, simply knowing this "force" allows us to sample from the true distribution using Langevin dynamics, without ever needing to compute the intractable normalization constant.
+This quantity—the gradient of the log-likelihood—is known as the **score function**. It is directly analogous to the _force_ in molecular dynamics. As we established earlier, simply knowing this "force" allows us to sample from the true distribution using Langevin dynamics, without ever needing to compute the intractable normalization constant.
 
 ## Langevin Sampling
 
