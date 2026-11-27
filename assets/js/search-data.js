@@ -208,6 +208,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/onimusha/";
+            },},{id: "books-phantom-blade-zero-影之刃零",
+          title: 'Phantom Blade Zero / 影之刃零',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/phantom-blade-zero/";
             },},{id: "news-i-opened-my-personal-website-sparkles-smile",
           title: 'I opened my personal website! :sparkles: :smile:',
           description: "",
